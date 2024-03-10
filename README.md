@@ -14,6 +14,12 @@
   <a href="https://github.com/zsmalla">
     <img src="https://avatars.githubusercontent.com/u/72483874?v=4" width="150" style="max-width: 100%;">
   </a>
+  <a href="https://github.com/HeewonKwak">
+    <img src="https://github.com/ksumini/Alogrithm-Study/assets/70088803/470f87a0-9740-40d2-add0-c7648964785d" width="150" style="max-width: 100%;">
+  </a>
+  <a href="https://github.com/osmin625">
+    <img src="https://github.com/ksumini/Alogrithm-Study/assets/70088803/12826964-66f2-49a2-a2e0-f48d41cd603e" width="150" style="max-width: 100%;">
+  </a>
 </div>
 
 ### 📢 Rules
