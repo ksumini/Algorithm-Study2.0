@@ -1,0 +1,36 @@
+name: PS 문제 등록
+description: 새로운 문제를 등록합니다.
+title: "[2024-00-00]: 문제 이름"
+labels: ["PS"]
+#projects: ["octo-org/1", "octo-org/44"]
+assignees:
+  - zsmalla
+body:
+
+  - type: input
+    id: contact
+    attributes:
+      label: 문제 링크
+      description: 문제 링크를 등록해주세요.
+      placeholder: ex. https://school.programmers.co.kr/learn/courses/30/lessons/258711
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: 난이도
+      description: 문제 난이도를 선택해주세요.
+      options:
+        - LEVEL2
+        - LEVEL3
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: other
+      description: 문제에 대한 사전 설명 혹은 기타 사항에 대해 작성해주세요.
+      value: "없습니다!"
+    validations:
+      required: false
