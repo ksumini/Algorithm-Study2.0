@@ -55,7 +55,7 @@ ex) Update README.md
 
 ### SESSION : 집중적인 알고리즘 스터디 `진행중`⏳
 - `WEEK 1` | [도넛과 막대 그래프 #3](https://github.com/ksumini/PS-Study/issues/3)
-- `WEEK 2` | [도넛과 막대 그래프 #8](https://github.com/ksumini/PS-Study/issues/8), [[PCCP 기출문제] 2번 / 석유 시추 #9](https://github.com/ksumini/PS-Study/issues/9)
+- `WEEK 2` | [주사위 고르기 #8](https://github.com/ksumini/PS-Study/issues/8), [[PCCP 기출문제] 2번 / 석유 시추 #9](https://github.com/ksumini/PS-Study/issues/9)
 
 
 <br/>
