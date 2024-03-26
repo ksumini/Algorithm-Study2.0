@@ -16,7 +16,7 @@ from collections import deque
 from typing import List, Set
 
 
-def judge(origin: Set[int], other: Set[int], target: int):
+def judge(origin: Set[int], other: Set[int], target: int) -> bool:
     """
     두 카드 뭉치로 target(n+1)을 만들 수 있으면 해당 원소 제거 후 True를 반환한다.
     만들 수 없다면 False를 반환한다.
@@ -72,7 +72,7 @@ def solution(coin: int, cards: List[int]) -> int:
     return answer
 
 
-def main():
+def main() -> None:
     case1 = [4, [3, 6, 7, 2, 1, 10, 5, 9, 8, 12, 11, 4]]
     case2 = [3, [1, 2, 3, 4, 5, 8, 6, 7, 9, 10, 11, 12]]
     case3 = [2, [5, 8, 1, 2, 9, 4, 12, 11, 3, 10, 6, 7]]
