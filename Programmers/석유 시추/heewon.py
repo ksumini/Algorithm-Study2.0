@@ -1,13 +1,13 @@
 '''
 ## 변수 설명
-- `row_oil`: row의 값당 석유의 총양을 저장한 딕셔너리 ex) 1번 예시 : {3: 7, 4: 7, 5: 7, 6: 9, 0: 8, 1: 8, 2: 8, 7: 2}
+- `col_oil `: row의 값당 석유의 총양을 저장한 딕셔너리 ex) 1번 예시 : {3: 7, 4: 7, 5: 7, 6: 9, 0: 8, 1: 8, 2: 8, 7: 2}
 - `visited`: 석유가 있는 곳은 True, 석유가 없는 곳은 False
 - `x_set`: 각 석유 덩어리당 포함된 row(x)의 값들을 set으로 저장
 - `oil_size`: DFS, BFS를 통하여 얻은 석유 덩어리의 석유양
 
 ## 접근 방식
 - DFS, BFS로 각각의 석유 덩어리당 총 석유양과 포함된 row 값들을 저장한다.
-- 각각의 덩어리 탐색이 끝나면 `x_set`에 포함된 row 값들의 석유양 `row_oil`에 추가
+- 각각의 덩어리 탐색이 끝나면 `x_set`에 포함된 row 값들의 석유양 `col_oil `에 추가
 - DFS 방법은 recursion limit 설정 필요
 
 ## 사용한 모듈
@@ -28,7 +28,7 @@ sys.setrecursionlimit(300000)
 
 def solution(land):
     answer = 0
-    row_oil = defaultdict(int)
+    col_oil  = defaultdict(int)
     visited = [[False for _ in range(len(land[0]))] for _ in range(len(land))]
     for y in range(len(land)):
         for x in range(len(land[0])):
@@ -36,8 +36,8 @@ def solution(land):
                 x_set = set()
                 oil_size = dfs(x, y, land, visited, x_set)
                 for x_case in x_set:
-                    row_oil[x_case] += oil_size
-    return max(row_oil.values())
+                    col_oil [x_case] += oil_size
+    return max(col_oil .values())
 
 def dfs(x, y, land, visited, x_set):
     dx = [-1, 0, 0, 1]
@@ -82,7 +82,7 @@ from collections import deque, defaultdict
 def solution(land):
     answer = 0
     cnt = 0
-    row_oil = defaultdict(int)
+    col_oil  = defaultdict(int)
     dx = [-1, 0, 0, 1]
     dy = [0, -1, 1, 0]
     visited = [[False for _ in range(len(land[0]))] for _ in range(len(land))]
@@ -105,8 +105,8 @@ def solution(land):
                             q.append([xxx, yyy])
                             oil_size += 1
                 for x_case in x_set:
-                    row_oil[x_case] += oil_size
-    return max(row_oil.values())
+                    col_oil [x_case] += oil_size
+    return max(col_oil .values())
 
 # 채점을 시작합니다.
 # 정확성  테스트
