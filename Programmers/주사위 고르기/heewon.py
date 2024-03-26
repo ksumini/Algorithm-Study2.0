@@ -10,7 +10,7 @@ def solution(dice):
     max_win = 0
     
     # 조합으로 구하는 주사위 쌍 구하기
-    dice_case = list(combinations([i for i in range(len(dice))], len(dice)//2))
+    dice_case = list(combinations(range(len(dice)), len(dice)//2))
     dice_set = [[dice_case[i], dice_case[-1-i]] for i in range(len(dice_case)//2)]
 
     for a, b in dice_set:
