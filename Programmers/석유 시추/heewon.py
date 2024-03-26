@@ -100,7 +100,8 @@ def solution(land):
                     for i in range(4):
                         xxx = xx + dx[i]
                         yyy = yy + dy[i]
-                        if xxx >= 0 and xxx < len(land[0]) and yyy >= 0 and yyy < len(land) and not visited[yyy][xxx] and land[yyy][xxx] == 1 and [xxx, yyy] not in q:
+                        if xxx >= 0 and xxx < len(land[0]) and yyy >= 0 and yyy < len(land) and not visited[yyy][xxx] and land[yyy][xxx] == 1:
+                            visited[yyy][xxx] = True
                             q.append([xxx, yyy])
                             oil_size += 1
                 for x_case in x_set:
@@ -109,23 +110,23 @@ def solution(land):
 
 # 채점을 시작합니다.
 # 정확성  테스트
-# 테스트 1 〉	통과 (0.07ms, 10.3MB)
-# 테스트 2 〉	통과 (0.25ms, 10.3MB)
+# 테스트 1 〉	통과 (0.06ms, 10.5MB)
+# 테스트 2 〉	통과 (0.26ms, 10.3MB)
 # 테스트 3 〉	통과 (0.06ms, 10.4MB)
-# 테스트 4 〉	통과 (0.16ms, 10.2MB)
-# 테스트 5 〉	통과 (0.12ms, 10.3MB)
-# 테스트 6 〉	통과 (1.17ms, 10.3MB)
-# 테스트 7 〉	통과 (1.39ms, 10.3MB)
-# 테스트 8 〉	통과 (0.58ms, 10.3MB)
-# 테스트 9 〉	통과 (4.44ms, 10.6MB)
+# 테스트 4 〉	통과 (0.15ms, 10.4MB)
+# 테스트 5 〉	통과 (0.11ms, 10.3MB)
+# 테스트 6 〉	통과 (1.01ms, 10.3MB)
+# 테스트 7 〉	통과 (1.35ms, 10.3MB)
+# 테스트 8 〉	통과 (0.53ms, 10.3MB)
+# 테스트 9 〉	통과 (4.38ms, 10.4MB)
 # 효율성  테스트
-# 테스트 1 〉	통과 (112.10ms, 14.1MB)
-# 테스트 2 〉	통과 (220.43ms, 14.1MB)
-# 테스트 3 〉	통과 (206.75ms, 13.9MB)
-# 테스트 4 〉	통과 (98.95ms, 14.1MB)
-# 테스트 5 〉	실패 (시간 초과)
-# 테스트 6 〉	통과 (123.15ms, 14MB)
+# 테스트 1 〉	통과 (76.92ms, 14MB)
+# 테스트 2 〉	통과 (200.53ms, 14MB)
+# 테스트 3 〉	통과 (229.74ms, 14MB)
+# 테스트 4 〉	통과 (75.60ms, 14MB)
+# 테스트 5 〉	통과 (419.41ms, 14MB)
+# 테스트 6 〉	통과 (81.03ms, 14MB)
 # 채점 결과
 # 정확성: 60.0
-# 효율성: 33.3
-# 합계: 93.3 / 100.0
+# 효율성: 40.0
+# 합계: 100.0 / 100.0
