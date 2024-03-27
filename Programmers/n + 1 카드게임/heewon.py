@@ -23,14 +23,31 @@
 #19 [n + 1](https://school.programmers.co.kr/learn/courses/30/lessons/258707#)
 '''
 
+from collections import deque
+
 def solution(coin, cards):
     answer = 1
+
     # 전체 카드 수
     n = len(cards)
 
     # 플레이어가 처음 시작하는 카드
-    first_cards = []
+    first_cards = set()
     life = 0
+
+    # Keep할 카드들
+    keep_cards = set()
+
+    def check_draw_card(coin, life):
+        card = cards.popleft()
+        if n + 1 - card in first_cards and coin > 0:
+            # 라이프를 증가하고 코인 개수를 감소
+            life += 1
+            coin -= 1
+        else:
+            # 첫 번째 선택한 카드를 플레이어의 손에 남은 카드 리스트에 추가
+            keep_cards.add(card)
+        return coin, life
 
     # first_cards 구하기
     for i in range(n // 3):
@@ -38,39 +55,18 @@ def solution(coin, cards):
         if n + 1 - cards[i] in first_cards:
             # 쌍이 발견되면 라이프를 증가하고 카드를 제거
             life += 1
-            first_cards.remove(n + 1 - cards[i])
+            first_cards.discard(n + 1 - cards[i])
         else:
             # 쌍이 없으면 플레이어의 카드에 현재 카드 추가
-            first_cards.append(cards[i])
+            first_cards.add(cards[i])
 
     # 덱에서 first_cards 제거
-    cards = cards[n // 3:]
-
-    # Keep할 카드들
-    keep_cards = []
+    cards = deque(cards[n // 3:])
 
     # 모든 카드가 소진될 때까지 게임 진행
     while(len(cards)):
-        # 덱에서 두 개의 카드 선택
-        card_one, card_two = cards[0], cards[1]
-
-        # 첫 번째 선택한 카드의 쌍이 플레이어의 카드에 있는지 및 플레이어가 코인을 가지고 있는지 확인
-        if n + 1 - card_one in first_cards and coin > 0:
-            # 라이프를 증가하고 코인 개수를 감소
-            life += 1
-            coin -= 1
-        else:
-            # 첫 번째 선택한 카드를 플레이어의 손에 남은 카드 리스트에 추가
-            keep_cards.append(card_one)
-        
-        # 두 번째 선택한 카드의 쌍이 플레이어의 카드에 있는지 및 플레이어가 코인을 가지고 있는지 확인
-        if n + 1 - card_two in first_cards and coin > 0:
-            # 라이프를 증가하고 코인 개수를 감소
-            life += 1
-            coin -= 1
-        else:
-            # 두 번째 선택한 카드를 플레이어의 손에 남은 카드 리스트에 추가
-            keep_cards.append(card_two)
+        coin, life = check_draw_card(coin, life)
+        coin, life = check_draw_card(coin, life)
         
         # 현재 라이프와 남은 코인 수를 기준으로 게임을 계속할지 여부 확인
         if life == 0:
@@ -80,15 +76,14 @@ def solution(coin, cards):
                 if n + 1 - keep_card in keep_cards:
                     life += 1
                     coin -= 2
-                    keep_cards.remove(n + 1 - keep_card)
-                    keep_cards.remove(keep_card)
+                    keep_cards.discard(n + 1 - keep_card)
+                    keep_cards.discard(keep_card)
                     break
             else:
                 break
         
         # 각 라운드가 끝난 후 라이프 감소, 덱에서 선택한 카드 제거 및 총 라운드 수 증가
         life -= 1
-        cards = cards[2:]
         answer += 1
     
     # 총 라운드 수 반환
