@@ -55,11 +55,11 @@
 
 def solution(h1, m1, s1, h2, m2, s2):
     # 시침, 분침, 초침들의 실제 값
-    def real_time(hour: int, minute: int, second: int):
+    def real_time(hour: float, minute: float, second: float):
         return (hour + minute / 60 + second / 3600) % 12, minute + second / 60, second
 
     # 0시 0분 0초 기준으로 알람이 울린 횟수
-    def get_alarm(hour, minute, second):
+    def get_alarm(hour: float, minute: float, second: float):
         real_hour, real_minute, real_second = real_time(hour, minute, second)
         # 기준이 0시 0분 0초 이므로 첫 1바퀴는 1번만 울림
         alarm_cnt = -1
@@ -79,7 +79,7 @@ def solution(h1, m1, s1, h2, m2, s2):
         return alarm_cnt
 
     # hour:minute:second 상황에서 알람이 울리는지 확인
-    def alarm_check(hour, minute, second):
+    def alarm_check(hour: float, minute: float, second: float):
         real_hour, real_minute, real_second = real_time(hour, minute, second)
         if real_hour >= 12:
             real_hour -= 12
