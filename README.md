@@ -57,7 +57,7 @@ ex) Update README.md
 - `WEEK 1` | [도넛과 막대 그래프 #3](https://github.com/ksumini/PS-Study/issues/3)
 - `WEEK 2` | [주사위 고르기 #8](https://github.com/ksumini/PS-Study/issues/8), [[PCCP 기출문제] 2번 / 석유 시추 #9](https://github.com/ksumini/PS-Study/issues/9)
 - `WEEK 3` | [n + 1 카드게임 #19](https://github.com/ksumini/PS-Study/issues/19), [[PCCP 기출문제] 3번 / 아날로그 시계 #24](https://github.com/ksumini/PS-Study/issues/24)
-- `WEEK 4` | [산 모양 타일링 #29](https://github.com/ksumini/PS-Study/issues/29)
+- `WEEK 4` | [산 모양 타일링 #29](https://github.com/ksumini/PS-Study/issues/29), [요격 시스템 #34](https://github.com/ksumini/PS-Study/issues/34)
 
 <br/>
 
