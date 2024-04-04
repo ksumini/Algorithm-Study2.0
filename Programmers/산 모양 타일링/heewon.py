@@ -72,15 +72,6 @@ output: 모양을 정삼각형 또는 마름모 타일로 빈 곳이 없도록 �
 def solution(n, tops):
     answer = 0
 
-    def check_start(top:int)->list:
-        '''
-        function: 1번째 타일 경우의 수
-        input: 위쪽에 정삼각형 유무
-        output: 다음의 경우의 수
-        '''
-        if top == 1: return [3,1]
-        else: return [2,1]
-
     def check_top(top:int, cases:list)->list:
         '''
         function: 각각의 i 번째 top의 조건에 따른 경우의 수
@@ -92,7 +83,7 @@ def solution(n, tops):
         else: 
             return [(cases[0] * 2 + cases[1]) % 10007, (cases[0] + cases[1] ) % 10007 ]
     
-    answer = check_start(tops[0])
+    answer = [3, 1] if tops[0] else [2, 1]
 
     for i in range(1, n):
         answer = check_top(tops[i], answer)
