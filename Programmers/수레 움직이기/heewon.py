@@ -58,20 +58,6 @@
 from collections import deque
 
 def solution(maze):
-
-    def check_wagon(now, next_position, opposite_path)->bool:
-        if 0>next_position[0] or next_position[0]>=len(maze) or 0>next_position[1] or next_position[1] >= len(maze[0]) or next_position in wall:
-            return False
-
-        if next_position in path:
-            return False
-        if opposite_path:
-            idx = len(path) if len(opposite_path) > len(path) else -1
-            if idx < len(opposite_path) and opposite_path[idx] == now:
-                return False
-            if opposite_path[idx] != next_position:
-                return True
-
     
     def bfs(start:list, end:list, opposite_path:list=[])->list:
         q = deque()
