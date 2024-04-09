@@ -26,26 +26,26 @@
 
 채점을 시작합니다.
 정확성  테스트
-테스트 1 〉	통과 (0.07ms, 10.3MB)
-테스트 2 〉	통과 (0.07ms, 10.4MB)
-테스트 3 〉	통과 (0.03ms, 10.3MB)
-테스트 4 〉	통과 (0.03ms, 10.3MB)
-테스트 5 〉	통과 (0.02ms, 10.3MB)
-테스트 6 〉	통과 (1.65ms, 10.4MB)
-테스트 7 〉	통과 (2.35ms, 10.3MB)
-테스트 8 〉	통과 (8.28ms, 10.4MB)
-테스트 9 〉	통과 (122.76ms, 10.3MB)
-테스트 10 〉	통과 (0.25ms, 10.3MB)
-테스트 11 〉	통과 (0.08ms, 10.4MB)
-테스트 12 〉	통과 (15.34ms, 10.2MB)
-테스트 13 〉	통과 (0.83ms, 10.4MB)
-테스트 14 〉	통과 (0.16ms, 10.4MB)
+테스트 1 〉	통과 (0.05ms, 10.4MB)
+테스트 2 〉	통과 (0.06ms, 10.2MB)
+테스트 3 〉	통과 (0.05ms, 10.3MB)
+테스트 4 〉	통과 (0.05ms, 10.4MB)
+테스트 5 〉	통과 (0.02ms, 10.4MB)
+테스트 6 〉	통과 (1.42ms, 10.2MB)
+테스트 7 〉	통과 (2.57ms, 10.2MB)
+테스트 8 〉	통과 (12.82ms, 10.1MB)
+테스트 9 〉	통과 (147.04ms, 10.3MB)
+테스트 10 〉	통과 (0.31ms, 10.3MB)
+테스트 11 〉	통과 (0.13ms, 10.3MB)
+테스트 12 〉	통과 (25.61ms, 10.1MB)
+테스트 13 〉	통과 (0.87ms, 10.4MB)
+테스트 14 〉	통과 (0.27ms, 10.3MB)
 테스트 15 〉	통과 (0.13ms, 10.4MB)
 테스트 16 〉	통과 (0.14ms, 10.2MB)
-테스트 17 〉	통과 (0.16ms, 10.4MB)
-테스트 18 〉	통과 (0.23ms, 10.3MB)
-테스트 19 〉	통과 (0.53ms, 10.4MB)
-테스트 20 〉	통과 (0.26ms, 10.3MB)
+테스트 17 〉	통과 (0.28ms, 10.3MB)
+테스트 18 〉	통과 (0.21ms, 10.1MB)
+테스트 19 〉	통과 (0.61ms, 10.2MB)
+테스트 20 〉	통과 (0.50ms, 10.3MB)
 채점 결과
 정확성: 100.0
 합계: 100.0 / 100.0
@@ -58,7 +58,7 @@
 from collections import deque
 
 def solution(maze):
-    
+
     def bfs(start:list, end:list, opposite_path:list=[])->list:
         q = deque()
         q.append([start, [start]])
@@ -67,6 +67,8 @@ def solution(maze):
         while q:
             # 지금의 좌표, 지금까지의 경로
             now, path = q.popleft()
+            if len(path) > 16:
+                continue
             # 도착 지점에 도착하면 경로 저장
             if end == now:
                 paths.append(path)
@@ -123,14 +125,103 @@ def solution(maze):
             elif maze[i][j] == 5:
                 wall.append([i,j])
                 
-    answer = float('INF')
+    answer = 17
     
     answer = double_bfs([red_start, red_end], [blue_start, blue_end], answer) # Red 경로 찾고 조건에 맞는 Blue 찾기 
     answer = double_bfs([blue_start, blue_end], [red_start, red_end], answer) # Blue 경로 찾고 조건에 맞는 Red 찾기
+    return answer if answer != 17 else 0 # 경로를 못 찾는 경우는 0
 
-    return answer if answer != float('INF') else 0 # 경로를 못 찾는 경우는 0
+# ----------------------NEW--------------------------------------
+
+from collections import deque
+
+def solution(maze):
+
+    def bfs(start:list, end:list)->list:
+        q = deque()
+        q.append([start, [start]])
+        # start에서 end로 가는 모든 경로 리스트로 저장
+        paths = []
+        while q:
+            # 지금의 좌표, 지금까지의 경로
+            now, path = q.popleft()
+            if len(path) > 16:
+                continue
+            # 도착 지점에 도착하면 경로 저장
+            if end == now:
+                paths.append(path)
+                continue
+            # 상하좌우 이동
+            for move in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+                # 다음 지점
+                next_position = [now[0] + move[0], now[1] + move[1]]
+                # 수레 조건 1, 2
+                if 0<=next_position[0]<len(maze) and 0<=next_position[1]<len(maze[0])and next_position not in wall and next_position not in path:
+                    q.append([next_position, path + [next_position]])
+        return paths
+    
+    wall = []
+
+    # 시작점, 도착점, 벽 위치 찾기
+    for i in range(len(maze)):
+        for j in range(len(maze[0])):
+            if maze[i][j] == 1:
+                red_start = [i, j]
+            elif maze[i][j] == 2:
+                blue_start = [i, j]
+            elif maze[i][j] == 3:
+                red_end = [i, j]
+            elif maze[i][j] == 4:
+                blue_end = [i, j]
+            elif maze[i][j] == 5:
+                wall.append([i,j])
+                
+    answer = 17
+    
+    # 간단한 BFS로 모든 경로 탐색
+    red_paths = bfs(red_start, red_end)
+    blue_paths = bfs(blue_start, blue_end)
+    
+    # 경로가 없으면 0 출력
+    if not blue_paths or not red_paths:
+        return 0
+    
+    # 가능한 경로의 모든 경우의 수들 남은 조건 확인
+    for red_path in red_paths:
+        for blue_path in blue_paths:
+            # 긴 경로와 짧은 경로 지정 
+            if len(red_path) > len(blue_path):
+                long_path = red_path
+                short_path = blue_path
+            else:
+                long_path = blue_path
+                short_path = red_path
+            # 수레 조건 확인 전에 최적의 경로가 가능한지 비교
+            if len(long_path) - 1 >= answer:
+                continue
+            # 경로를 확인하며 수레 조건 확인
+            for index in range(len(long_path) - 1):
+                # 짧은 경로는 도착하면 멈춰야 한다!
+                if index < len(short_path)-1:
+                    short_index = index
+                else: 
+                    short_index = -1
+                # 수레 조건 4 동시에 같은 좌표 불가
+                if long_path[index] == short_path[short_index]:
+                    break
+                # 수레 조건 5 자리 바꾸기 불가
+                if short_index != -1:
+                    if long_path[index + 1] == short_path[short_index] and long_path[index] == short_path[short_index+1]:
+                        break
+            else:
+                # 최적 경로 갱신
+                answer = len(long_path) - 1
+                    
+    
+    return answer if answer != 17 else 0 # 경로를 못 찾는 경우는 0
 
 # -----------------------DFS---------------------------------------
+# 시도한 코드 (휴지통)
 def dfs(maze, start, end, path=[]):
     # print(start, path)
     # 현재 위치를 방문한 경로에 추가
