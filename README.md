@@ -59,6 +59,7 @@ ex) Update README.md
 - `WEEK 3` | [n + 1 카드게임 #19](https://github.com/ksumini/PS-Study/issues/19), [[PCCP 기출문제] 3번 / 아날로그 시계 #24](https://github.com/ksumini/PS-Study/issues/24)
 - `WEEK 4` | [산 모양 타일링 #29](https://github.com/ksumini/PS-Study/issues/29), [요격 시스템 #34](https://github.com/ksumini/PS-Study/issues/34)
 - `WEEK 5` | [[PCCP 기출문제] 4번 / 수레 움직이기 #35](https://github.com/ksumini/PS-Study/issues/35), [두 원 사이의 정수 쌍 #43](https://github.com/ksumini/PS-Study/issues/43)
+- `WEEK 6` | [[2023 현대모비스 알고리즘 경진대회 예선] / 에어컨 #46](https://github.com/ksumini/PS-Study/issues/46), [연속된 부분 수열의 합 #47](https://github.com/ksumini/PS-Study/issues/47)
 
 <br/>
 
