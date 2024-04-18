@@ -29,20 +29,19 @@ def solution(sequence, k):
     window_sum = sequence[start]  # 부분수열의 합을 저장할 변수
 
     while end < N:
+        if window_sum == k and min_len > end - start: # 합이 k와 같고 현재 길이가 최소 길이보다 작은 경우
+            if start == end:  # 부분수열의 길이가 1인 경우
+                return [start, end]  # 시작 인덱스와 끝 인덱스를 반환
+            min_len = end - start  # 최소 길이 갱신
+            answer = [start, end]  # 결과를 갱신
         if window_sum < k:  # 합이 k보다 작은 경우
             if end == N - 1:  # 수열의 끝에 도달한 경우
                 break
             window_sum += sequence[end + 1]  # 다음 요소를 합에 추가
             end += 1  # 끝 인덱스 증가
-        elif window_sum == k and min_len > end - start:  # 합이 k와 같고 현재 길이가 최소 길이보다 작은 경우
-            if start == end:  # 부분수열의 길이가 1인 경우
-                return [start, end]  # 시작 인덱스와 끝 인덱스를 반환
-            min_len = end - start  # 최소 길이 갱신
-            answer = [start, end]  # 결과를 갱신
+        else: # 합이 k보다 크거나 같은 경우
             window_sum -= sequence[start]  # 시작 요소를 합에서 제거
             start += 1  # 시작 인덱스 증가
-        else:  # 합이 k보다 큰 경우
-            window_sum -= sequence[start]  # 시작 요소를 합에서 제거
-            start += 1  # 시작 인덱스 증가
+
 
     return answer  # 결과 반환
