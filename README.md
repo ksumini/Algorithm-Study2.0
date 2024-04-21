@@ -60,6 +60,7 @@ ex) Update README.md
 - `WEEK 4` | [산 모양 타일링 #29](https://github.com/ksumini/PS-Study/issues/29), [요격 시스템 #34](https://github.com/ksumini/PS-Study/issues/34)
 - `WEEK 5` | [[PCCP 기출문제] 4번 / 수레 움직이기 #35](https://github.com/ksumini/PS-Study/issues/35), [두 원 사이의 정수 쌍 #43](https://github.com/ksumini/PS-Study/issues/43)
 - `WEEK 6` | [[2023 현대모비스 알고리즘 경진대회 예선] / 에어컨 #46](https://github.com/ksumini/PS-Study/issues/46), [연속된 부분 수열의 합 #47](https://github.com/ksumini/PS-Study/issues/47)
+- `WEEK 7` | [[2023 현대모비스 알고리즘 경진대회 예선] / 상담원 인원 #53](https://github.com/ksumini/PS-Study/issues/53), [과제 진행하기 #54](https://github.com/ksumini/PS-Study/issues/54)
 
 <br/>
 
