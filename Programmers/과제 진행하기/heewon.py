@@ -59,26 +59,22 @@ def solution(plans: List[List[str]]) -> List[str]:
     plans.sort(key=lambda x: x[1])
 
     for subject, start_time, playtime in plans:
-        if suspend:
-            # 연기한 과목이 있으면 완료가 가능한지 확인
-            while suspend and before_start_time != start_time:
-                before_subject, before_duration = suspend.pop()
-                # 다음 과제 전에 밀린 과제를 수행 가능한 경우
-                if before_start_time + before_duration <= start_time:
-                    answer.append(before_subject)
-                    before_start_time += before_duration
-                    if before_start_time != start_time and suspend:
-                        continue
-                # 밀린 과제를 못 끝내는 경우
-                else:
-                    # 밀린 과제를 stack에 넣기 전에 남은 과제양 갱신
-                    suspend.append([before_subject, before_duration - (start_time - before_start_time)])
-                before_start_time = start_time
-                suspend.append([subject, playtime])
-        else:
-            # 연기한 과제들 없으면 현제 과제를 연기
-            before_start_time = start_time
-            suspend.append([subject, playtime])
+        # 연기한 과목이 있으면 완료가 가능한지 확인
+        while suspend:
+            before_subject, before_duration = suspend.pop()
+            # 다음 과제 전에 밀린 과제를 수행 가능한 경우
+            if before_start_time + before_duration <= start_time:
+                answer.append(before_subject)
+                before_start_time += before_duration
+            # 밀린 과제를 못 끝내는 경우
+            else:
+                # 밀린 과제를 stack에 넣기 전에 남은 과제양 갱신
+                suspend.append([before_subject, before_duration - (start_time - before_start_time)])
+                break
+        # 현제 과제를 밀린 과제에 추가
+        before_start_time = start_time
+        suspend.append([subject, playtime])
     # 기존에 수행한 과제에 연기한 과제들을 역순으로 추가
-    answer.extend(reversed(list(map(lambda x: x[0], suspend))))
+    while suspend:
+        answer.append(suspend.pop()[0])
     return answer
