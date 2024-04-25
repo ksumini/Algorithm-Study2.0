@@ -32,16 +32,17 @@ def solution(plans: List[str]) -> List[str]:
     answer = []
 
     while subject_heap:
-        term = subject_heap[0][0] - ing[0]  # 현재 과제 시작 시간과 다음 과제 시작시간 간의 term
+        start, time, subject = ing         # (시작시간, 걸리는 시간, 과목)
+        term = subject_heap[0][0] - start  # 현재 과제 시작 시간과 다음 과제 시작시간 간의 term
 
         # 진행 중 과제가 inturrupt 받지 않는 경우
-        if ing[1] <= term:
+        if time <= term:
             # 진행 중인 과제 완료 처리 (dummy data 예외 처리)
-            if ing[2]:
+            if subject:
                 answer.append(ing[2])
 
             # 다음 과제 시작까지 여유 시간이 있는 경우 멈춘 과제 진행
-            extra_time = term - ing[1]
+            extra_time = term - time
 
             while post_queue and extra_time > 0:
                 last_time, subject = post_queue.popleft()
@@ -59,10 +60,10 @@ def solution(plans: List[str]) -> List[str]:
 
         # 진행 중 과제가 inturrupt 받는 경우
         else:
-            ing[1] -= subject_heap[0][0] - ing[0]
+            time -= subject_heap[0][0] - start
             # 현재 과제 미루기
             # 가장 최근에 멈춘 과제부터 수행되야 하므로 첫 번째 원소로 삽입
-            post_queue.appendleft([ing[1], ing[2]])
+            post_queue.appendleft([time, subject])
             # 새로운 과제 시작
             ing = heappop(subject_heap)
 
