@@ -57,8 +57,8 @@ def solution(picks:List, minerals:List)->int:
     fatigue = [[0,0,0] for _ in range(m)]
     
     for mineral in minerals:
-        for i, fati in enumerate(get_fatigue(mineral)):
-            fatigue[idx][i] += fati
+        for pick_idx, fati in enumerate(get_fatigue(mineral)):
+            fatigue[idx][pick_idx] += fati
         period += 1
         if period == 5: # 다음 곡괭이 사용
             period = 0
