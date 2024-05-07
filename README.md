@@ -62,6 +62,7 @@ ex) Update README.md
 - `WEEK 6` | [[2023 현대모비스 알고리즘 경진대회 예선] / 에어컨 #46](https://github.com/ksumini/PS-Study/issues/46), [연속된 부분 수열의 합 #47](https://github.com/ksumini/PS-Study/issues/47)
 - `WEEK 7` | [[2023 현대모비스 알고리즘 경진대회 예선] / 상담원 인원 #53](https://github.com/ksumini/PS-Study/issues/53), [과제 진행하기 #54](https://github.com/ksumini/PS-Study/issues/54)
 - `WEEK 8` | [아방가르드 타일링 #61](https://github.com/ksumini/PS-Study/issues/61), [광물 캐기 #62](https://github.com/ksumini/PS-Study/issues/62)
+- `WEEK 9` | [연속 펄스 부분 수열의 합 #68](https://github.com/ksumini/PS-Study/issues/68), [리코쳇 로봇 #69](https://github.com/ksumini/PS-Study/issues/69)
 
 <br/>
 
