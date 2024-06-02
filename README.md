@@ -22,7 +22,13 @@
   </a>
 </div>
   <a href="https://github.com/c0natus">
-  <img src="https://avatars.githubusercontent.com/c0natus" width="150" style="max-width: 100%;">
+    <img src="https://avatars.githubusercontent.com/c0natus" width="150" style="max-width: 100%;">
+  </a>
+  <a href="https://github.com/byeol3325">
+    <img src="https://avatars.githubusercontent.com/byeol3325" width="150" style="max-width: 100%;">
+  </a>
+  <a href="https://github.com/blaire-pi">
+    <img src="https://avatars.githubusercontent.com/blaire-pi" width="150" style="max-width: 100%;">
   </a>
 </div>
 
