@@ -5,12 +5,12 @@
 - `check_line`: 입력되는 라인이 `O`, `X` 빙고인지 확인
 
 ## 접근 방식
-- 각각의 `O`와 `X`의 갯수 구하기
+- 각각의 `O`와 `X`의 개수 구하기
 - 마지막으로 `O`를 둔 경우
-    - `O` 갯수 = `X` 갯수 + 1 
+    - `O` 개수 = `X` 개수 + 1 
     - `X`는 빙고 불가
 - 마지막으로 `X`를 둔 경우
-    - `O` 갯수 = `X` 갯수
+    - `O` 개수 = `X` 개수
     - `O`는 빙고 불가
 - 나머지 경우는 불가
 
@@ -56,6 +56,6 @@ def solution(board) -> int:
     check_line([board[i][i] for i in range(3)])     # 대각선
     check_line([board[i][2 - i] for i in range(3)]) # 반대 대각선
 
-    if o_cnt == x_cnt and not o_bingo:     return 1
-    if o_cnt == x_cnt + 1 and not x_bingo: return 1
+    if o_cnt == x_cnt and not o_bingo:     return 1 # X 표시 후
+    if o_cnt == x_cnt + 1 and not x_bingo: return 1 # O 표시 후
     return 0
