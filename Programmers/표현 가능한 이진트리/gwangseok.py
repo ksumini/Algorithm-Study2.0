@@ -1,8 +1,8 @@
 # 시간 복잡도
-# tree_depth: O(log(50)) -> O(1), 1e50의 이진수 length = 50  // 최대 depth: 6
-# is_all_zero: O(2*6 - 1) -> O(1), 더미를 포함한 최대 길이 = 63
-# is_root: O(63 + 2 * is_all_zero) -> O(1), 최대 길이 63이고 root만 확인 + 0일 때 좌, 우 child 확인
-# 결국 O(N)
+# tree_depth: O(int(log(int(log(M)) + 1))) -> O(log(log M)) // 1e15의 이진수 length = 50  // 최대 depth: 6
+# is_all_zero: O(2*int(log(log(M) + 1)) - 1) -> O(log M) // 더미를 포함한 최대 길이 = 63
+# is_root: O(3 * is_all_zero) -> O(log M) // 최대 길이 2*int(log(log(M) + 1)) - 1이고 root만 확인 그리고 0일 때 좌, 우 child 확인
+# 결국 O(N * log M)
 
 
 def tree_depth(length: int) -> int:
