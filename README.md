@@ -76,7 +76,7 @@ ex) Update README.md
 <br/>
 
 ### SESSION 2.0 : 집중적인 알고리즘 스터디 `진행중`⏳ 
-- `WEEK 1` | [혼자하는 틱택토 #77](https://github.com/ksumini/PS-Study/issues/78)
+- `WEEK 1` | [혼자하는 틱택토 #77](https://github.com/ksumini/PS-Study/issues/78), [표현 가능한 이진트리 #84](https://github.com/ksumini/PS-Study/issues/84)
 
 
 <!-- ## ✨ 효과 만점 코딩테스트 Cheat Sheet!  
