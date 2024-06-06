@@ -20,7 +20,7 @@
     
 
 ## 사용한 모듈
-`None`
+`math`
 
 ## 추가 정보
 - 시간: 1 hour 이상(반례 못 찾음 + 코드 Refactoring)
@@ -42,55 +42,55 @@ def solution(numbers:list)->list:
     answer = []
     for number in numbers:
         num_bin = bin(number)[2:]  # 숫자를 이진수 문자열로 변환
-        node_depth = get_node_cnt(len(num_bin))  # 완전 이진 트리를 만들기 위한 높이 확인
-        num_bin = '0' * (pow(2, node_depth) - 1 - len(num_bin)) + num_bin  # 완전 이진 트리를 만들기 위한 추가 노드 개수 추가
-        if dfs(num_bin):  # DFS로 트리 구조 확인
-            answer.append(1)  # 조건을 만족하면 1 추가
-        else:
-            answer.append(0)  # 조건을 만족하지 않으면 0 추가
+        tree_depth = math.ceil(math.log2(len(num_bin)+1))  # 완전 이진 트리를 만들기 위한 높이 확인
+        num_bin = '0' * (pow(2, tree_depth) - 1 - len(num_bin)) + num_bin  # 완전 이진 트리를 만들기 위한 추가 노드 개수 추가
+        answer.append(dfs(num_bin))
     return answer
 
-def get_node_depth(node_cnt:int) -> int:
-    """
-    완전 이진 트리를 만족하게 하는 트리의 높이 구하기
 
-    Args:
-        노드 수: 노드의 수
-
-    Returns:
-        높이: 완전 이진 트리를 만족하게 하는 트리의 높이
-    """
-    node_cnt += 1
-    depth = 0
-    check = True
-    while node_cnt > 1:
-        depth += 1
-        node_cnt, remainder = divmod(node_cnt, 2)  # 노드를 2로 나누어 트리 깊이 계산
-        if remainder != 0:
-            check = False  # 나머지가 0이 아니면 완전 이진 트리가 아님
-    if check:
-        return depth  # 완전 이진 트리이면 현재 시간 반환
-    return depth + 1  # 완전 이진 트리가 아니면 시간에 1을 더해서 반환
-
-def dfs(nodes:str)->bool:
+def dfs(tree:str)->bool:
     """
     해당 트리가 표현 가능한지 확인
 
     Args:
-        nodes: node의 유무를 1, 0으로 표현한 str 값
+        tree: node의 유무를 1, 0으로 표현한 str 값
 
     Returns:
-        False: 불가능 True: 가능
+        0: 불가능 1: 가능
     """
-    if len(nodes) == 1:
-        return True  # 노드가 하나만 있으면 트리 구조를 만족
-    mid = math.ceil(len(nodes) / 2) - 1  # 중간 노드 계산
-    if nodes[mid] == '0':  # 중간 노드가 0이면
-        if nodes[:mid].count('1') == 0 and nodes[mid+1:].count('1') == 0:  # 좌우 서브트리 모두 1이 없는 경우
-            return True  # 트리 구조를 만족
+    if len(tree) == 1:
+        return 1  # 노드가 하나만 있으면 트리 구조를 만족
+    mid = math.ceil(len(tree) / 2) - 1  # 중간 노드 계산
+    left_tree = tree[:mid]
+    right_tree = tree[mid+1:]
+    if tree[mid] == '0':  # 중간 노드가 0이면
+        if left_tree.count('1') == 0 and right_tree.count('1') == 0:  # 좌우 서브트리 모두 1이 없는 경우
+            return 1  # 트리 구조를 만족
         else:
-            return False  # 하나라도 1이 있으면 트리 구조를 만족하지 않음
-    return dfs(nodes[:mid]) and dfs(nodes[mid+1:])  # 중간 노드가 1이면 좌우 서브트리를 재귀적으로 검사
+            return 0  # 하나라도 1이 있으면 트리 구조를 만족하지 않음
+    return dfs(left_tree) and dfs(right_tree)  # 중간 노드가 1이면 좌우 서브트리를 재귀적으로 검사
 
 print(solution([7, 42, 5])) # [1, 1, 0]
 print(solution([63, 111, 95])) # [1, 1, 0]
+
+# def get_node_depth(node_cnt:int) -> int:
+#     """
+#     완전 이진 트리를 만족하게 하는 트리의 높이 구하기
+
+#     Args:
+#         노드 수: 노드의 수
+
+#     Returns:
+#         높이: 완전 이진 트리를 만족하게 하는 트리의 높이
+#     """
+#     node_cnt += 1
+#     depth = 0
+#     check = True
+#     while node_cnt > 1:
+#         depth += 1
+#         node_cnt, remainder = divmod(node_cnt, 2)  # 노드를 2로 나누어 트리 깊이 계산
+#         if remainder != 0:
+#             check = False  # 나머지가 0이 아니면 완전 이진 트리가 아님
+#     if check:
+#         return depth  # 완전 이진 트리이면 현재 시간 반환
+#     return depth + 1  # 완전 이진 트리가 아니면 시간에 1을 더해서 반환
