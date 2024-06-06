@@ -60,13 +60,12 @@ def check_tree(start, end, number):
 def solution(numbers):
     answer = []
     for num in numbers:
-        bin_num = format(num, 'b') #앞에 접두어 제거를 위해 format 사용
-        temp = [] 
-
-        # 모든 문자가 '1'일 때, 무조건 포화 이진트리 조건 충족
-        if '0' not in bin_num:
+        if num == 1:
             answer.append(1)
             continue
+        
+        bin_num = format(num, 'b') #앞에 접두어 제거를 위해 format 사용
+        temp = []
         
         # bin_num 앞에 생략되었을지도 모르는 '0' 추가.
         # 이진트리는 대칭 형태. 루트노드가 될 수 있는 건 'round(len(bin_num) / 2))' 번째까지
