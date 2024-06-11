@@ -50,9 +50,7 @@ def bfs(maps: list, start: tuple, goal: tuple) -> int:
 
     # 큐에 시작 지점 삽입
     q = deque([start])
-    # 시작 지점 방문처리
-    visited = set([start])
-    # 각 지점까지의 거리
+    # 방문처리 및 각 지점까지의 거리를 위한 딕셔너리
     distance = {start: 0}
 
     while q:
@@ -65,8 +63,7 @@ def bfs(maps: list, start: tuple, goal: tuple) -> int:
         for dx, dy in directions:
             nx, ny = cur[0] + dx, cur[1] + dy
             if 0 <= nx < len(maps) and 0 <= ny < len(maps[0]) and maps[nx][ny] != 'X':
-                if (nx, ny) not in visited:
-                    visited.add((nx, ny))
+                if (nx, ny) not in distance:
                     q.append((nx, ny))
                     distance[(nx, ny)] = distance[cur] + 1
 
