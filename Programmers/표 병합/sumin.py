@@ -98,7 +98,7 @@ def find(r: int, c: int):
     return r, c
 
 
-def union(r1, c1, r2, c2):
+def union(r1: int, c1: int, r2: int, c2: int):
     """
     - 두 disjoint set의 루트 노드를 병합함 (r1, c1) <- (r2, c2)
     - (r1, c1), (r2, c2)는 각 set의 루트 노드임을 가정
@@ -107,7 +107,7 @@ def union(r1, c1, r2, c2):
     P[r2][c2] = P[r1][c1]
 
 
-def merge(r1, c1, r2, c2):
+def merge(r1: int, c1: int, r2: int, c2: int):
     """
     - (r1, c1) 위치의 셀과 (r2, c2) 위치의 셀을 선택하여 병합
     - (r1, c1) 위치에 값이 있으면 해당 셀의 값을 따라감
@@ -120,14 +120,14 @@ def merge(r1, c1, r2, c2):
     # 같은 셀일 경우 무시
     if r1 == r2 and c1 == c2:
         return
-    # 위치에 값이 있으면 해당 셀의 값을 따라감
+    # (r1, c1) 위치에 값이 있으면 해당 셀의 값을 따라감
     if table[r1][c1]:
         union(r1, c1, r2, c2)
     else:
         union(r2, c2, r1, c1)
 
 
-def unmerge(r, c):
+def unmerge(r: int, c: int):
     """
     - (r, c) 위치의 셀을 선택하여 해당 셀의 모든 병합을 해제
     - 병합되어있던 모든 셀은 (r, c)를 제외하고 모두 초기값('')을 가짐
