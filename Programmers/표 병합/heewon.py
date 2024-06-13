@@ -17,7 +17,7 @@ parent = {(i, j): (i, j) for i in range(1, 51) for j in range(1, 51)}
 table = [['EMPTY' for _ in range(51)] for _ in range(51)]
 
 
-def get_data(cur):
+def get_data(cur:tuple)->str:
     """
     주어진 좌표 (cur)의 부모 노드 좌표 데이터를 반환하는 함수
 
@@ -31,7 +31,7 @@ def get_data(cur):
     return table[r][c]
 
 
-def find_parent(cur):
+def find_parent(cur:tuple)->tuple:
     """
     주어진 좌표 (cur)의 최상위 부모 노드 좌표를 반환하는 함수 (Path Compression 이용)
 
@@ -47,7 +47,7 @@ def find_parent(cur):
     return parent[cur]  # 최상위 부모 노드 반환
 
 
-def update1(cur, val):
+def update1(cur:tuple, val:str)->None:
     """
     주어진 좌표 (cur)의 데이터를 val로 업데이트하는 함수
 
@@ -59,7 +59,7 @@ def update1(cur, val):
     table[r][c] = val
 
 
-def update2(val1, val2):
+def update2(val1:str, val2:str)->None:
     """
     table 전체를 순회하여 val1 값을 val2 값으로 일괄 변경하는 함수
 
@@ -73,7 +73,7 @@ def update2(val1, val2):
                 table[i][j] = val2
 
 
-def merge(cur1, cur2):
+def merge(cur1:tuple, cur2:tuple)->None:
     """
     두 좌표 (cur1, cur2)를 같은 집합으로 합치하는 함수
 
@@ -89,7 +89,7 @@ def merge(cur1, cur2):
         parent[p2] = p1  # p2의 부모를 p1로 설정 (좌표2 데이터가 있는 경우)
 
 
-def unmerge(cur):
+def unmerge(cur:tuple)->None:
     """
     주어진 좌표 (cur)를 포함하는 집합을 분리하는 함수
 
@@ -116,7 +116,7 @@ def unmerge(cur):
         parent[key] = key
 
 
-def solution(commands):
+def solution(commands:list)->list:
     answer = []
     for command in commands:
         command, *args = command.split()
