@@ -14,24 +14,28 @@ def go(maps: list, a: list, b: list) -> int:
     Returns
         int : minimum time, if can't go 'E', return -1
     """
-    h = len(maps)
+    h = len(maps);
     w = len(maps[0])
-    q = deque(); visited = set() # to check visited locations
-    q.append([a[0], a[1], 0]); visited.add((a[0], a[1])) # visited starting point
+    q = deque();
+    visited = [[0] * w for _ in range(h)]
+    q.append([a[0], a[1], 0]);
+    visited[a[0]][a[1]] = 1
 
     while q:
+
         y, x, dist = q.popleft()
 
         for i in range(4):
-            ny = y + dy[i]; nx = x + dx[i]
+            ny = y + dy[i];
+            nx = x + dx[i]
             if ny < 0 or nx < 0 or ny >= h or nx >= w:  # out of maps
                 continue
-            if maps[ny][nx] == 'X' or (ny, nx) in visited:  # wall or visited
+            if maps[ny][nx] == 'X' or visited[ny][nx] == 1:  # wall or visited
                 continue
             if [ny, nx] == b:  # arrive end point(b)
                 return dist + 1
 
-            visited.add((ny, nx)) # add visited point
+            visited[ny][nx] = 1
             q.append([ny, nx, dist + 1])
     return -1
 
@@ -91,3 +95,8 @@ def solution(maps: list) -> int:
         total_time += lever_to_end
 
     return total_time
+
+from collections import defaultdict
+distance = defaultdict(lambda: 0)
+distance['a'] = 10
+print(distance['b'])

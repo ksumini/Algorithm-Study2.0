@@ -33,7 +33,7 @@ def check_binary_tree(bin_num: str):
                 if (bin_num[p - 2 ** (depth - 1) - 1] == '1') or (
                         bin_num[p + 2 ** (depth - 1) - 1] == '1'):  # if not dummy node
                     return 0
-                else:  # to check next nodes under dummny nodes
+                else:  # to check next nodes under dummy nodes
                     nodes.append(p - 2 ** (depth - 1))
                     nodes.append(p + 2 ** (depth - 1))
 
