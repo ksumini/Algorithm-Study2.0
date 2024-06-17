@@ -1,3 +1,6 @@
+# list의 del은 O(N)
+# dict의 del은 O(1)이라고 함. -> 해쉬 함수를 활용했기 때문이라고 함
+
 def update_cell(r: int, c: int, v: str):
     # cell 값 업데이트
     cur_k = (r, c)
@@ -51,18 +54,18 @@ def unmerge(r: int, c: int, new_grp_idx: int):
     key = (r, c)
     cur_gidx = cell__group_and_value[key][0]
     
-    # unmerge 하면서 새로운 grp으로 각각 할당
+    # unmerge 하면서 새로운 group으로 각각 할당
     # key 값에 해당하는 것은 value 그대로 유지
     for k in group__cell[cur_gidx]:
-        if k == key:            
+        if k == key:  # unmerge하는 경우 해당 key 값의 cell은 value를 유지 따라서 새로운 group으로 할당
             cell__group_and_value[k][0] = new_grp_idx
-        else:
+        else:  # 해당 key의 그룹에 속하는 다른 원소들은 값을 null로 바꾸고 새로운 group으로 할당
             cell__group_and_value[k] = [new_grp_idx, None]
             
         group__cell[new_grp_idx] = [k]
         new_grp_idx += 1
         
-    del group__cell[cur_gidx]
+    del group__cell[cur_gidx]  # 해당 key 값의 group은 삭제
     
     return new_grp_idx
     
