@@ -1,4 +1,72 @@
-# 2시간 30분 // dfs: 1시간 30분, while: 1시간
+# 2시간 30분
+# 구현: 1시간, DFS: 1시간 30분
+
+
+def mv_optimize(answer, x, y, r, c):
+    # 현재 row, col (x, y)에서 목표 row, col (r, c)까지 최적으로 이동
+    mv_up = mv_left = mv_right = mv_down = 0
+        
+    if x >= r: mv_up = (x - r)
+    else: mv_down = (r - x)
+    if y >= c: mv_left = (y - c)
+    else: mv_right = (c -y)
+
+    answer += 'd' * mv_down + 'l' * mv_left + 'r' * mv_right + 'u' * mv_up    
+    
+    return answer
+
+
+def solution(n, m, x, y, r, c, k):
+    # (r1, c1)에서 (r2, c2)까지 이동할 때 필요한 최적의 거리 계산
+    compute_need_mvs = lambda r1, c1, r2, c2: abs(r1 - r2) + abs(c1 - c2)
+    need_mvs = compute_need_mvs(x, y, r, c)
+    spare_mvs = k - need_mvs  # 왕복해야 하는 여유분 이동 수 구함.
+    if spare_mvs < 0 or spare_mvs % 2 != 0:
+        # 여유분이 음수이거나 짝수가 아니면 이동 불가능
+        # 최적으로 이동하더라도 왕복을 해야하기 때문에 여유분은 짝수여야 한다.
+        return 'impossible'
+    
+    answer = ''
+    cur_r, cur_c = x, y
+    
+    # 다 하고 나니 if else를 여러번 사용하면 while문도 필요 없이 이동 개수를 바로 구할 수 있을 것 같다...
+    while cur_r < n:
+        # 제일 아래로 이동
+        if need_mvs == k:
+            # 이동하던 중 목적지 까지 이동해야 할 여유 거리가 없을 경우
+            # 최적의 경로로 이동
+            answer = mv_optimize(answer, cur_r, cur_c, r, c)
+            return answer
+        
+        cur_r += 1
+        answer += 'd'
+        k -= 1
+        need_mvs = compute_need_mvs(cur_r, cur_c, r, c)
+        
+    while cur_c > 1:
+        # 제일 왼쪽으로 이동
+        if need_mvs == k:
+            # 이동하던 중 목적지 까지 이동해야 할 여유 거리가 없을 경우
+            # 최적의 경로로 이동
+            answer = mv_optimize(answer, cur_r, cur_c, r, c)
+            return answer
+        
+        cur_c -= 1
+        answer += 'l'
+        k -= 1
+        need_mvs = compute_need_mvs(cur_r, cur_c, r, c)
+    
+    while need_mvs < k:
+        # 이동 우선순위에 따라 우좌 반복해서 이동
+        answer += 'rl'
+        k -= 2
+        
+    # 이동이 필요한 수만큼 여유분이 남앗으므로 최적으로 목적지 까지 이동
+    # 반복을 제외하고 대칭이동하는 것과 같다.
+    answer = mv_optimize(answer, cur_r, cur_c, r, c)
+    return answer
+
+
 # setrecursionlimit -> 힌트보고 함.
 
 # import sys
@@ -95,68 +163,3 @@
 #         else:  # 여유분이 제일 밑으로 이동할 때 필요한 거리보다 적을 때 // 밑 -> 위
 #             ret = ret + 'd' * cnt + 'u' * cnt
 #     return ret
-
-
-def mv_optimize(answer, x, y, r, c):
-    # 현재 row, col (x, y)에서 목표 row, col (r, c)까지 최적으로 이동
-    mv_up = mv_left = mv_right = mv_down = 0
-        
-    if x >= r: mv_up = (x - r)
-    else: mv_down = (r - x)
-    if y >= c: mv_left = (y - c)
-    else: mv_right = (c -y)
-
-    answer += 'd' * mv_down + 'l' * mv_left + 'r' * mv_right + 'u' * mv_up    
-    
-    return answer
-
-
-def solution(n, m, x, y, r, c, k):
-    # (r1, c1)에서 (r2, c2)까지 이동할 때 필요한 최적의 거리 계산
-    compute_need_mvs = lambda r1, c1, r2, c2: abs(r1 - r2) + abs(c1 - c2)
-    need_mvs = compute_need_mvs(x, y, r, c)
-    spare_mvs = k - need_mvs  # 왕복해야 하는 여유분 이동 수 구함.
-    if spare_mvs < 0 or spare_mvs % 2 != 0:
-        # 여유분이 음수이거나 짝수가 아니면 이동 불가능
-        # 최적으로 이동하더라도 왕복을 해야하기 때문에 여유분은 짝수여야 한다.
-        return 'impossible'
-    
-    answer = ''
-    cur_r, cur_c = x, y
-    
-    # 다 하고 나니 if else를 여러번 사용하면 while문도 필요 없이 이동 개수를 바로 구할 수 있을 것 같다...
-    while cur_r < n:
-        # 제일 아래로 이동
-        if need_mvs == k:
-            # 이동하던 중 목적지 까지 이동해야 할 여유 거리가 없을 경우
-            # 최적의 경로로 이동
-            answer = mv_optimize(answer, cur_r, cur_c, r, c)
-            return answer
-        
-        cur_r += 1
-        answer += 'd'
-        k -= 1
-        need_mvs = compute_need_mvs(cur_r, cur_c, r, c)
-        
-    while cur_c > 1:
-        # 제일 왼쪽으로 이동
-        if need_mvs == k:
-            # 이동하던 중 목적지 까지 이동해야 할 여유 거리가 없을 경우
-            # 최적의 경로로 이동
-            answer = mv_optimize(answer, cur_r, cur_c, r, c)
-            return answer
-        
-        cur_c -= 1
-        answer += 'l'
-        k -= 1
-        need_mvs = compute_need_mvs(cur_r, cur_c, r, c)
-    
-    while need_mvs < k:
-        # 이동 우선순위에 따라 우좌 반복해서 이동
-        answer += 'rl'
-        k -= 2
-        
-    # 이동이 필요한 수만큼 여유분이 남앗으므로 최적으로 목적지 까지 이동
-    # 반복을 제외하고 대칭이동하는 것과 같다.
-    answer = mv_optimize(answer, cur_r, cur_c, r, c)
-    return answer
