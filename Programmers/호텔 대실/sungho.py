@@ -1,24 +1,24 @@
 import heapq as hq
 
 
-def can_next_time(a: str, b: str) -> int:
+def can_next_time(end_time: str, start_time: str) -> int:
     """
     check next book_time (end_time + 10 min <= next start_time)
 
     Params
-        a : end time of book time
-        b : start time of book time
+        end_time : end time of book time
+        start_time : start time of next book time
 
     Returns
         bool : if can do next time, return 1. else, return 0.
 
     """
-    a = a.split(':');
-    a_minute = 60 * int(a[0]) + int(a[1])
-    b = b.split(':');
-    b_minute = 60 * int(b[0]) + int(b[1])
+    end_time = end_time.split(':');
+    end_time_minute = 60 * int(end_time[0]) + int(end_time[1])
+    start_time = start_time.split(':');
+    start_time_minute = 60 * int(start_time[0]) + int(start_time[1])
 
-    if a_minute + 10 <= b_minute:
+    if end_time_minute + 10 <= start_time_minute:
         return 1
     return 0
 
