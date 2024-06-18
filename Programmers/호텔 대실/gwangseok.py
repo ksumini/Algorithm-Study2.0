@@ -16,12 +16,12 @@ def change_to_minute(book_time: list) -> list:
         end = to_minute(end) + 10  # 청소 시간 미리 고려
         
         book_minute.append([start, end])
-    
-    book_minute.sort()  # Greedy로 하기 위해 청소 시간으로 정렬.
     return book_minute
 
 def solution(book_time):
     book_minute = change_to_minute(book_time) # O(NlogN)
+    book_minute.sort()  # Greedy로 하기 위해 청소 시간으로 정렬.
+    
     ends = [book_minute[0][1]]  # 현재 숙소를 사용하고 있는 사람들이 나가는 시간
     answer = 1  # 필요한 방의 개수
     
