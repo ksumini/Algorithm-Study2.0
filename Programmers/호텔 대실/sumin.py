@@ -29,7 +29,7 @@
 import heapq
 
 
-def time_to_minutes(time_str: str):
+def time_to_minutes(time_str: str) ->  str:
     hh, mm = map(int, time_str.split(':'))
     return hh * 60 + mm
 
@@ -51,7 +51,7 @@ def solution(book_time: list) -> int:
         # 힙이 비어있지 않으면(사용할 객실이 있음)서, 가장 빨리 퇴실하는 객실의 퇴실 시각 + 10분 이후에 입실하려고 한다면, 해당 객실을 사용(퇴실 시각 업데이트)
         if heap and start_time >= heap[0]:
             heapq.heappop(heap)
-        else: # 힙이 비어있다면(이어서 사용할 객실이 없기 때문에) 새로운 객실 추가
+        else: # 힙이 비어있거나, 가장 빨리 퇴실하는 객실의 시간보다 더 빨리 입실을 원하는 경우 (이어서 사용할 객실이 없기 때문에) 새로운 객실 추가
             answer += 1
 
         heapq.heappush(heap, end_time)
