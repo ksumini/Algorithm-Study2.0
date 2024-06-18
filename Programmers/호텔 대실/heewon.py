@@ -50,7 +50,7 @@ def solution(book_time:list)->int:
     # 최소 힙 (min-heap) 생성
     room = []
     for start, end in book_time:
-        if room and start >= heap[0]:         # 대여 중이고 새로운 손님의 시작 시간 >= 기존 손님의 퇴실 시간
+        if room and start >= room[0]:         # 대여 중이고 새로운 손님의 시작 시간 >= 기존 손님의 퇴실 시간
             earliest_end_time = heapq.heappop(room)     # 기존의 손님 퇴실
         else:
             answer += 1     # 방 추가 대여
