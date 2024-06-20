@@ -83,12 +83,8 @@ def solution(n, m, x, y, r, c, k):
     
     # 추가 이동 (우좌 반복)
     while additional_move > 0:
-        additional_move -= 1
-        answer += 'r'
-        if additional_move == 0:
-            break
-        additional_move -= 1
-        answer += 'l'
+        additional_move -= 2
+        answer += 'rl'
         
     # 필수 이동 (우향)
     if essential_dy > 0:
