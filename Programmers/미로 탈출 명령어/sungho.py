@@ -46,7 +46,7 @@ def solution(n, m, x, y, r, c, k, opt='list'):
         while q:
             x, y, path = q.popleft()
             for d, v in DICT_directions.items():
-                nx = x + v[0];
+                nx = x + v[0]
                 ny = y + v[1]
                 if ny <= 0 or nx <= 0 or nx > n or ny > m:  # out of board
                     continue
@@ -66,7 +66,7 @@ def solution(n, m, x, y, r, c, k, opt='list'):
             for i in range(4):
                 v = PATH_directions[i];
                 d = PATH[i]
-                nx = x + v[0];
+                nx = x + v[0]
                 ny = y + v[1]
                 if ny <= 0 or nx <= 0 or nx > n or ny > m:  # out of board
                     continue
