@@ -48,7 +48,7 @@ def solution(maps):
     for i in range(h):
         for j in range(w):
             if maps[i][j] != 'X' and visited[i][j] == 0:
-                visited, result = find_linked(maps, visited, [i, j])  # 방문해서
+                visited, result = find_linked(maps, visited, [i, j])
                 results.append(result)
 
     if results == []:  # 지낼 곳이 없음
