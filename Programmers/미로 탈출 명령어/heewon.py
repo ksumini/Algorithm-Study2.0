@@ -82,9 +82,7 @@ def solution(n, m, x, y, r, c, k):
         additional_r += additional_l
     
     # 추가 이동 (우좌 반복)
-    while additional_move > 0:
-        additional_move -= 2
-        answer += 'rl'
+    answer += 'rl' * (additional_move//2)
         
     # 필수 이동 (우향)
     if essential_dy > 0:
