@@ -1,5 +1,3 @@
-# 10분
-
 from collections import deque
 
 
