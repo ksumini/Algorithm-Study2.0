@@ -29,37 +29,37 @@ DFS(스택 방식)를 사용해 풀이
 """
 
 
-def dfs(x: int, y: int, rows: int, cols: int, maps: list, visited: list):
+def dfs(x: int, y: int, rows: int, cols: int, maps: list, visited: list) -> int:
     stack = [(x, y)]
     total_food = 0
+
     while stack:
         cx, cy = stack.pop()
-        if 0 <= cx < rows and 0 <= cy < cols and maps[cx][cy] != 'X' and not visited[cx][cy]:
-            visited[cx][cy] = True
-            total_food += int(maps[cx][cy])
+        # 1) 지도를 벗어나거나, 2) 칸이 'X'(바다)이거나,  3) 이미 방문한 칸이라면 확인하지 않음
+        if not (0 <= cx < rows and 0 <= cy < cols) or maps[cx][cy] == 'X' or visited[cx][cy]:
+            continue
 
-            # 상하좌우로 이동
-            stack.append((cx + 1, cy))
-            stack.append((cx - 1, cy))
-            stack.append((cx, cy + 1))
-            stack.append((cx, cy - 1))
+        visited[cx][cy] = True
+        total_food += int(maps[cx][cy])
+
+        # 아직 방문하지 않은 칸 중 이동가능하다면 스택에 추가
+        for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+            nx, ny = cx + dx, cy + dy
+            if 0 <= nx < rows and 0 <= ny < cols and maps[nx][ny] != 'X' and not visited[nx][ny]:
+                stack.append((nx, ny))
 
     return total_food
 
 
 def solution(maps: list) -> list:
     rows, cols = len(maps), len(maps[0])
-    visited = [[False] * cols for _ in range(rows)]
+    visited = [[False] * cols for _ in range(rows)] # 방문처리를 위한 2차원 배열
     result = []
 
     for i in range(rows):
         for j in range(cols):
             if maps[i][j] != 'X' and not visited[i][j]:
                 food = dfs(i, j, rows, cols, maps, visited)
-                if food > 0:
-                    result.append(food)
+                result.append(food)
 
-    if not result:
-        return [-1]
-
-    return sorted(result)
+    return sorted(result) if result else [-1]
