@@ -90,3 +90,4 @@ def solution(maps: list) -> int:
         total_time += lever_to_end
 
     return total_time
+
