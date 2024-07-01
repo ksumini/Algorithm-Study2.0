@@ -25,19 +25,14 @@ def solution(numbers):
               만약 더 큰 원소가 없다면 -1을 담습니다.
   """
 
-  n = len(numbers)  # 리스트의 길이를 n에 저장합니다.
-  answer = [-1] * n  # 결과를 저장할 answer 리스트를 -1로 초기화합니다.
+  answer = [-1] * len(numbers)  # 결과를 저장할 answer 리스트를 -1로 초기화
   stack = []  # 더 큰 원소를 추적하기 위한 스택 생성
 
-  # 리스트를 순회하며 다음과 같은 작업을 수행합니다.
   for idx, number in enumerate(numbers):
-    # 스택이 비어있지 않고 스택 맨 위 원소보다 현재 원소가 더 크다면
-    while stack and numbers[stack[-1]] < number:
-      # 스택에서 꺼낸 인덱스를 해당 원소의 다음 큰 원소로 표시합니다.
-      answer[stack.pop()] = number
+    while stack and numbers[stack[-1]] < number:    # 스택이 비어있지 않고 스택 맨 위 원소보다 현재 원소가 더 크다면
+      answer[stack.pop()] = number  # 스택에서 꺼낸 인덱스를 해당 원소의 다음 큰 원소로 표시
 
-    # 현재 원소의 인덱스를 스택에 추가합니다.
-    stack.append(idx)
+    stack.append(idx)   # 현재 원소의 인덱스를 스택에 추가
 
   return answer  # 계산된 결과 answer 리스트를 반환합니다.
 
