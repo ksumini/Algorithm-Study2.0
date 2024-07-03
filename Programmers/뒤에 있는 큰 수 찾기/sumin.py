@@ -30,14 +30,10 @@ def solution(numbers: list) -> list:
     answer = [-1] * len(numbers)
     stack = [numbers[-1]]
     for i in range(len(numbers)-2, -1, -1):
-        # 바로 뒤 원소가 더 크면 뒷 큰수 업데이트
-        if numbers[i] < numbers[i+1]:
-            answer[i] = numbers[i+1]
-        else: # 바로 뒤 원소가 더 작으면
-            # 스택에 들어온 순서대로 탐색, numbers[i]보다 큰 원소를 발견할 때까지
-            while stack and stack[-1] <= numbers[i]:
-                stack.pop() # 원소 제거, 어차피 다음 순회할 원소 입장에서도 필요 없는 수이기 때문
-            if stack:
-                answer[i] = stack[-1]
+        # 스택에 들어온 순서대로 탐색, numbers[i]보다 큰 원소를 발견할 때까지
+        while stack and stack[-1] <= numbers[i]:
+            stack.pop() # 원소 제거, 어차피 다음 순회할 원소 입장에서도 필요 없는 수이기 때문
+        if stack:
+            answer[i] = stack[-1]
         stack.append(numbers[i])
     return answer
