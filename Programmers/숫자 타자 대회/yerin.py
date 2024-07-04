@@ -45,7 +45,7 @@ def measure_distance(start, end):
                 else:
                     q.append(((nx, ny), dist + 2))
 
-# 경로 계산
+# 가중치 계산
 def cost(start, end):
     sx, sy = start
     ex, ey = end
