@@ -115,3 +115,64 @@ def solution(numbers):
 # print(solution("3692581470"))
 # print(solution("7531"))
 print(solution("12345"))
+
+
+
+# from collections import deque, defaultdict
+
+
+# def solution(numbers):
+#     pos = {
+#         '1': (0, 0), '2': (0, 1), '3': (0, 2),
+#         '4': (1, 0), '5': (1, 1), '6': (1, 2),
+#         '7': (2, 0), '8': (2, 1), '9': (2, 2),
+#         '*': (3, 0), '0': (3, 1), '#': (3, 2)
+#     }
+#
+#     test = defaultdict(int)
+#     for i in range(4):
+#         for j in range(3):
+#             for num in range(10):
+#                 test[(i, j), pos[str(num)]] = cost((i, j), pos[str(num)])
+#
+#     l_pos = pos['4']
+#     r_pos = pos['6']
+#     first_num_pos = pos[numbers[0]]
+#
+#     q = deque([
+#         (0, first_num_pos, r_pos, test[(l_pos, first_num_pos)]),
+#         (0, l_pos, first_num_pos, test[(r_pos, first_num_pos)])
+#     ])
+#
+#     dist_list = [[] for _ in range(len(numbers))]
+#     dist_list[0].extend([
+#         test[(l_pos, first_num_pos)],
+#         test[(r_pos, first_num_pos)]
+#     ])
+#
+#     for i in range(1, len(numbers)):
+#         num = numbers[i]
+#         num_pos = pos[num]
+#
+#         while q and q[0][0] == i - 1:
+#             n, left, right, dist = q.popleft()
+#
+#             if left == right:
+#                 continue
+#
+#             if num_pos == right:
+#                 q.append((i, left, num_pos, dist + 1))
+#                 dist_list[i].append(dist + 1)
+#             elif num_pos == left:
+#                 q.append((i, num_pos, right, dist + 1))
+#                 dist_list[i].append(dist + 1)
+#             elif num_pos != right and num_pos != left:
+#                 new_dist_from_l = dist + test[(left, num_pos)]
+#                 new_dist_from_r = dist + test[(right, num_pos)]
+#
+#                 q.append((i, num_pos, right, new_dist_from_l))
+#                 q.append((i, left, num_pos, new_dist_from_r))
+#
+#                 dist_list[i].extend([new_dist_from_l, new_dist_from_r])
+#
+#     return min(dist_list[-1])
