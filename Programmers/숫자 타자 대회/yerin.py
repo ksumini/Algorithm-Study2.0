@@ -88,22 +88,18 @@ def solution(numbers):
             if l_pos == r_pos:  # 왼손 오른손 겹치는 경우 제외
                 continue
 
-            if l_pos == num_pos:  # 숫자의 좌표와 왼손 위치 동일
-                new_dp[(num_pos, r_pos)] = cur_dist + 1
-            elif r_pos == num_pos:  # 숫자의 좌표와 오른손 위치 동일
-                new_dp[(l_pos, num_pos)] = cur_dist + 1
-            else:  # 왼손, 오른손, 숫자 모두 다른 좌표
-                # 이미 new_dp에 있는 경우, 출발지에 따라 거리값이 다를 수 있으니 최솟값으로 갱신
-                # 왼손이 이동
-                if (num_pos, r_pos) in new_dp and new_dp[(num_pos, r_pos)] < cur_dist + dist[(l_pos, num_pos)]:
-                    pass
-                else:
-                    new_dp[(num_pos, r_pos)] = cur_dist + dist[(l_pos, num_pos)]
-                # 오른손이 이동
-                if (l_pos, num_pos) in new_dp and new_dp[(l_pos, num_pos)] < cur_dist + dist[(r_pos, num_pos)]:
-                    pass
-                else:
-                    new_dp[(l_pos, num_pos)] = cur_dist + dist[(r_pos, num_pos)]
+            # 이미 new_dp에 있는 경우, 출발지에 따라 거리값이 다를 수 있으니 최솟값으로 갱신
+            # 왼손이 이동
+            if (num_pos, r_pos) in new_dp and new_dp[(num_pos, r_pos)] < cur_dist + dist[(l_pos, num_pos)]:
+                pass
+            else:
+                new_dp[(num_pos, r_pos)] = cur_dist + dist[(l_pos, num_pos)]
+            # 오른손이 이동
+            if (l_pos, num_pos) in new_dp and new_dp[(l_pos, num_pos)] < cur_dist + dist[(r_pos, num_pos)]:
+                pass
+            else:
+                new_dp[(l_pos, num_pos)] = cur_dist + dist[(r_pos, num_pos)]
+
         dp = new_dp
     return min(dp.values())
 
