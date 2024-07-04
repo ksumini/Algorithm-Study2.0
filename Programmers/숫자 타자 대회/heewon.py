@@ -15,7 +15,6 @@
     - 각각의 step마다 가능한 손가락들의 조합을 저장한다.
     - 겹치는 조합들은 최솟값으로 저장
     - 손가락이 동일한 숫자를 안 누르게 조심
-    - 성호님 코드 참고하여 weight_map 생성 모든 값 저장 대신에 사용하는 경우만 저장
 
 ## 추가 정보
 - 시간: 2 hour 이하
@@ -37,16 +36,13 @@ def solution(numbers: str) -> int:
     global weight_map
 
     prev_weight = {'46': 0} # 초기의 손가락의 가중치 값
-    prev_fingers = ['46']   # 초기의 손가락 위치
-    weight_map = defaultdict(int)
+    weight_map = defaultdict(int)   # weight_map 선언
 
     for num in numbers:
-        current_fingers = [] # 현재의 손가락 위치들
         current_weight = {}     # 현재의 손가락 위치의 가중치 값
 
-        for fingers in prev_fingers:    # 이전의 손가락 위치들
+        for fingers, weight in prev_weight.items():    # 이전의 손가락 위치, 가중치 총합
             left, right = fingers       # 왼손가락, 오른손가락의 "숫자"
-            weight = prev_weight[fingers]   # 이전까지의 가중치 총합
 
             if num != right:   # 손가락 중복 피하기 위한 조건
                 new_fingers = num + right   # 새로운 손가락 조합
@@ -55,7 +51,6 @@ def solution(numbers: str) -> int:
                     current_weight[new_fingers] = min(current_weight[new_fingers], new_weight)  # 최솟값으로 수정
                 else:   # 첫 손가락 조합
                     current_weight[new_fingers] = new_weight
-                    current_fingers.append(new_fingers)    # 손가락 조합 추가 
 
             if num != left:     # 손가락 중복 피하기 위한 조건
                 new_fingers = left + num    # 새로운 손가락 조합
@@ -64,9 +59,7 @@ def solution(numbers: str) -> int:
                     current_weight[new_fingers] = min(current_weight[new_fingers], new_weight) # 최솟값으로 수정
                 else:   # 첫 손가락 조합
                     current_weight[new_fingers] = new_weight
-                    current_fingers.append(new_fingers)    # 손가락 조합 추가 
 
-        prev_fingers = current_fingers  # 이전 조합 갱신
         prev_weight = current_weight    # 이전 가중치 정보 갱신
 
     return min(prev_weight.values())    # 가장 적은 가중치 반환
@@ -84,7 +77,7 @@ def get_weight(n1: str, n2: str) -> int:
     Returns:
         두 숫자 버튼 간의 거리에 해당하는 가중치 값입니다.
     """
-    if weight_map[n1+n2]:
+    if weight_map[n1+n2]:   # 저장된 값이 있으면 반환
         return weight_map[n1+n2]
 
     # 숫자 버튼과 그 위치를 매핑하는 사전
@@ -102,6 +95,7 @@ def get_weight(n1: str, n2: str) -> int:
     # 거리에 해당하는 가중치 정보
     weight_dict = {0: 1, 1: 2, 2: 3, 4: 4, 5: 5, 8: 6, 9: 6, 10: 7}
     
+    # weight map에 저장
     weight_map[n1+n2] = weight_dict[distance]
 
     return weight_dict[distance]
