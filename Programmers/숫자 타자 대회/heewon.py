@@ -15,11 +15,14 @@
     - 각각의 step마다 가능한 손가락들의 조합을 저장한다.
     - 겹치는 조합들은 최솟값으로 저장
     - 손가락이 동일한 숫자를 안 누르게 조심
+    - 성호님 코드 참고하여 weight_map 생성 모든 값 저장 대신에 사용하는 경우만 저장
 
 ## 추가 정보
 - 시간: 2 hour 이하
 - 힌트: `Tip`
 '''
+
+from collections import defaultdict
 
 def solution(numbers: str) -> int:
     """
@@ -31,9 +34,11 @@ def solution(numbers: str) -> int:
     Returns:
         입력된 텍스트를 입력하는 데 필요한 최소 손가락 움직임 값입니다.
     """
+    global weight_map
 
     prev_weight = {'46': 0} # 초기의 손가락의 가중치 값
     prev_fingers = ['46']   # 초기의 손가락 위치
+    weight_map = defaultdict(int)
 
     for num in numbers:
         current_fingers = [] # 현재의 손가락 위치들
@@ -45,18 +50,20 @@ def solution(numbers: str) -> int:
 
             if num != right:   # 손가락 중복 피하기 위한 조건
                 new_fingers = num + right   # 새로운 손가락 조합
+                new_weight = weight + get_weight(left, num)
                 if new_fingers in current_weight:   # 기존의 조합이 존재하면
-                    current_weight[new_fingers] = min(current_weight[new_fingers], weight + get_weight(left, num))  # 최솟값으로 수정
+                    current_weight[new_fingers] = min(current_weight[new_fingers], new_weight)  # 최솟값으로 수정
                 else:   # 첫 손가락 조합
-                    current_weight[new_fingers] = weight + get_weight(left, num)
+                    current_weight[new_fingers] = new_weight
                     current_fingers.append(new_fingers)    # 손가락 조합 추가 
 
             if num != left:     # 손가락 중복 피하기 위한 조건
                 new_fingers = left + num    # 새로운 손가락 조합
+                new_weight = weight + get_weight(right, num)
                 if new_fingers in current_weight:   # 기존의 조합이 존재하면
-                    current_weight[new_fingers] = min(current_weight[new_fingers], weight + get_weight(right, num)) # 최솟값으로 수정
+                    current_weight[new_fingers] = min(current_weight[new_fingers], new_weight) # 최솟값으로 수정
                 else:   # 첫 손가락 조합
-                    current_weight[new_fingers] = weight + get_weight(right, num)
+                    current_weight[new_fingers] = new_weight
                     current_fingers.append(new_fingers)    # 손가락 조합 추가 
 
         prev_fingers = current_fingers  # 이전 조합 갱신
@@ -77,6 +84,8 @@ def get_weight(n1: str, n2: str) -> int:
     Returns:
         두 숫자 버튼 간의 거리에 해당하는 가중치 값입니다.
     """
+    if weight_map[n1+n2]:
+        return weight_map[n1+n2]
 
     # 숫자 버튼과 그 위치를 매핑하는 사전
     phone_point = {'1': [0, 0], '2': [0, 1], '3': [0, 2],
@@ -92,6 +101,8 @@ def get_weight(n1: str, n2: str) -> int:
 
     # 거리에 해당하는 가중치 정보
     weight_dict = {0: 1, 1: 2, 2: 3, 4: 4, 5: 5, 8: 6, 9: 6, 10: 7}
+    
+    weight_map[n1+n2] = weight_dict[distance]
 
     return weight_dict[distance]
 
