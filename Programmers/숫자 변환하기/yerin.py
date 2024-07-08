@@ -16,6 +16,11 @@ def bfs(x, y, n):
         for nx in [cur_x + n, cur_x * 3, cur_x * 2]:
             if nx == y:
                 return cnt + 1
+            # if nx < y:
+            #     if nx in visited and visited[nx] < cnt + 1:
+            #         continue
+            #     q.append((nx, cnt + 1))
+            #     visited[nx] = cnt + 1
             if nx < y and visited[nx] > cnt + 1:
                 q.append((nx, cnt + 1))
                 visited[nx] = cnt + 1
