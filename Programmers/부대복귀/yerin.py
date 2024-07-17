@@ -15,18 +15,15 @@ def solution(n, roads, sources, destination):
         towns[b].append(a)
 
     q = deque([(destination, 0)])  # 목적지에서부터 출발. (목적지, 거리)
-    visited = {destination}
+    dist_info[destination] = 0
 
     while q:
         loc, dist = q.popleft()
 
-        if loc in sources:  # 부대원이 위치한 마을의 경우, 거리값을 저장
-            dist_info[loc] = dist
-
         for nx in towns[loc]:
-            if nx not in visited:
-                visited.add(nx)
+            if dist_info[nx] == -1:  # 방문한 적이 없을 때
                 q.append((nx, dist + 1))
+                dist_info[nx] = dist + 1  # 지역 ~ 목적지 최단 거리
 
     for sc in sources:
         answer.append(dist_info[sc])
