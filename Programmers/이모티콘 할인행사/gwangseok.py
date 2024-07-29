@@ -6,7 +6,9 @@ def get_cur_answer(users, emoticons, sales):
         consume = 0
         for idx, price in enumerate(emoticons):  # O(m)
             if user[0] <= sales[idx]:
-                consume += int(price * (100 - sales[idx]) / 100)  # int(price * (1 - sales[idx] / 100))
+                consume += int(price * (100 - sales[idx]) / 100)  
+                # int(price * (1 - sales[idx] / 100))
+                # round(price * (1 - sales[idx] / 100), 0)
                 
         if consume < user[1]:
             answer[1] += consume
