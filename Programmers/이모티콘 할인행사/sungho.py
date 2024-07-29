@@ -41,9 +41,7 @@ def solution(users: list, emoticons: list) -> list:
             answer[1] = max(total_price, answer[1])
         return None
 
-    get_answer()
     done = set()
-    done.add(tuple(sales))
 
     def backtrack():
         """
@@ -52,13 +50,13 @@ def solution(users: list, emoticons: list) -> list:
         """
         nonlocal users, emoticons, sales
         get_answer()
+        done.add(tuple(sales))
         for i in range(m):
             for _ in range(3):
                 if sales[i] < 40:
                     sales[i] += 10
                     if tuple(sales) not in done:
                         backtrack()
-                        done.add(tuple(sales))
                     sales[i] -= 10
 
     backtrack()
