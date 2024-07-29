@@ -82,6 +82,9 @@ ex) Update README.md
 - `WEEK 4` | [무인도 여행 #114](https://github.com/ksumini/PS-Study/issues/114), [억억단을 외우자 #123](https://github.com/ksumini/Algorithm-Study2.0/issues/123)
 - `WEEK 5` | [뒤에 있는 큰 수 찾기 #130](https://github.com/ksumini/Algorithm-Study2.0/issues/130), [숫자 타자 대회 #136](https://github.com/ksumini/Algorithm-Study2.0/issues/136)
 - `WEEK 6` | [숫자 변환하기 #141](https://github.com/ksumini/Algorithm-Study2.0/issues/141), [등대 #143](https://github.com/ksumini/Algorithm-Study2.0/issues/143)
+- `WEEK 7` | [시소 짝꿍 #154](https://github.com/ksumini/Algorithm-Study2.0/issues/154), [부대복귀 #160](https://github.com/ksumini/Algorithm-Study2.0/issues/160)
+- `WEEK 8` | [택배 배달과 수거하기 #166](https://github.com/ksumini/Algorithm-Study2.0/issues/166), [2차원 동전 뒤집기 #167](https://github.com/ksumini/Algorithm-Study2.0/issues/167)
+- `WEEK 9` | [이모티콘 할인행사 #175](https://github.com/ksumini/Algorithm-Study2.0/issues/175)
 
 
 <!-- ## ✨ 효과 만점 코딩테스트 Cheat Sheet!  
