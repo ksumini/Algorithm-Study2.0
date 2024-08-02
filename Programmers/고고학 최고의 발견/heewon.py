@@ -1,3 +1,10 @@
+def clockwise(clockHands, x, y, time, N):
+    clockHands[y][x] = (clockHands[y][x] + time) % 4                        # 가운데
+    if x > 0:       clockHands[y][x-1] = (clockHands[y][x-1] + time) % 4    # 서
+    if y > 0:       clockHands[y-1][x] = (clockHands[y-1][x] + time) % 4    # 북
+    if x < N - 1:   clockHands[y][x+1] = (clockHands[y][x+1] + time) % 4    # 동
+    if y < N - 1:   clockHands[y+1][x] = (clockHands[y+1][x] + time) % 4    # 남
+
 def product(*args, repeat=1):
     pools = [arg for arg in args] * repeat
     result = [[]]
@@ -5,13 +12,6 @@ def product(*args, repeat=1):
         result = [x + [y] for x in result for y in pool]
     for prod in result:
         yield tuple(prod)
-
-def clockwise(clockHands, x, y, time, N):
-    clockHands[y][x] = (clockHands[y][x] + time) % 4                        # 가운데
-    if x > 0:       clockHands[y][x-1] = (clockHands[y][x-1] + time) % 4    # 서
-    if y > 0:       clockHands[y-1][x] = (clockHands[y-1][x] + time) % 4    # 북
-    if x < N - 1:   clockHands[y][x+1] = (clockHands[y][x+1] + time) % 4    # 동
-    if y < N - 1:   clockHands[y+1][x] = (clockHands[y+1][x] + time) % 4    # 남
 
 def solution(clockHands):
     answer = float('INF')
