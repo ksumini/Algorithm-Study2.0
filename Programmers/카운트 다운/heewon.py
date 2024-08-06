@@ -1,10 +1,10 @@
-def doubleortriple(dp, idx, point):
-    dp[idx+point][0] = min(dp[idx+point][0], dp[idx][0] + 1)
+def doubleortriple(dp, now, point):
+    dp[now+point][0] = min(dp[now+point][0], dp[now][0] + 1)
 
-def bullorsingle(dp, idx, point):
-    dp[idx+point][0] = min(dp[idx+point][0], dp[idx][0] + 1)
-    if dp[idx+point][0] == dp[idx][0] + 1:
-        dp[idx+point][1] = max(dp[idx+point][1], dp[idx][1] + 1)
+def bullorsingle(dp, now, point):
+    dp[now+point][0] = min(dp[now+point][0], dp[now][0] + 1)
+    if dp[now+point][0] == dp[now][0] + 1:
+        dp[now+point][1] = max(dp[now+point][1], dp[now][1] + 1)
 
 def solution(target):
     cnt = 0
