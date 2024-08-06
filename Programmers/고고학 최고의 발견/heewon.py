@@ -1,4 +1,11 @@
-def product(*args, repeat):
+def clockwise(clockHands, x, y, time, N):
+    clockHands[y][x] = (clockHands[y][x] + time) % 4                        # 가운데
+    if x > 0:       clockHands[y][x-1] = (clockHands[y][x-1] + time) % 4    # 서
+    if y > 0:       clockHands[y-1][x] = (clockHands[y-1][x] + time) % 4    # 북
+    if x < N - 1:   clockHands[y][x+1] = (clockHands[y][x+1] + time) % 4    # 동
+    if y < N - 1:   clockHands[y+1][x] = (clockHands[y+1][x] + time) % 4    # 남
+
+def product(*args, repeat=1):
     pools = [arg for arg in args] * repeat
     result = [[]]
     for pool in pools:
@@ -31,13 +38,6 @@ def solution(clockHands):
             answer = min(answer, cnt)
     
     return answer
-
-def clockwise(clockHands, x, y, time, N):
-    clockHands[y][x] = (clockHands[y][x] + time) % 4                        # 가운데
-    if x > 0:       clockHands[y][x-1] = (clockHands[y][x-1] + time) % 4    # 서
-    if y > 0:       clockHands[y-1][x] = (clockHands[y-1][x] + time) % 4    # 북
-    if x < N - 1:   clockHands[y][x+1] = (clockHands[y][x+1] + time) % 4    # 동
-    if y < N - 1:   clockHands[y+1][x] = (clockHands[y+1][x] + time) % 4    # 남
 
 # def print_(clockHands):
 #     for row in clockHands:
