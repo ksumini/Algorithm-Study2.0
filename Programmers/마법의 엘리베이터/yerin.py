@@ -15,17 +15,18 @@ def solution(storey):
 
     return answer
 
-print(solution(485))
+print(solution(555))
 
 '''
 555
-(-)
+(5-)
 1) 550 -> 5
 2) 500 -> 5
 3) 0 -> 5
 
-(+)
+(5+)
 1) 560 -> 5
 2) 600 -> 4
-3) 0 -> 6
+3) 1000 -> 4
+3) 0 -> 1
 '''
