@@ -14,8 +14,6 @@ def solution(beginning, target):
     if beginning == target:
         return 0  # 시작 상태와 목표 상태가 동일한 경우 0번의 연산
 
-    n, m = len(beginning), len(beginning[0])  # 배열의 행과 열 크기
-
     def reverse_rows(maps, idxs):
         """
         지정된 행들을 뒤집는 함수입니다.
