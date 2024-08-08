@@ -29,6 +29,9 @@ dp[i] = 점수 i를 달성하기 위한 [최소 다트 수, 그때의 싱글/불
 dp[i] = min(dp[i], dp[i-score][0] + 1, dp[i-score][1] + (1 if score <= 20 or score == 50 else 0))
 3. 초기값 정하기
 dp[0] = (0, 0)
+
+<시간 복잡도>
+O(target) * O(42: scores_by_one_shot의 크기) = O(target)
 """
 
 
