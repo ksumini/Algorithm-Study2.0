@@ -4,7 +4,7 @@ title: "[2024-00-00]: 문제 이름"
 labels: ["PS"]
 #projects: ["octo-org/1", "octo-org/44"]
 assignees:
-  - zsmalla
+  - 
 body:
 
   - type: input
@@ -23,6 +23,8 @@ body:
       options:
         - LEVEL2
         - LEVEL3
+        - Medium
+        - Hard
       default: 0
     validations:
       required: true
