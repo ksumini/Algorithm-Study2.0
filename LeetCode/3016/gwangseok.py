@@ -1,4 +1,4 @@
-# O(n)
+# O(n log n)
 
 class Solution:
     def minimumPushes(self, word: str) -> int:
