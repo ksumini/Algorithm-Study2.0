@@ -84,7 +84,10 @@ ex) Update README.md
 - `WEEK 6` | [숫자 변환하기 #141](https://github.com/ksumini/Algorithm-Study2.0/issues/141), [등대 #143](https://github.com/ksumini/Algorithm-Study2.0/issues/143)
 - `WEEK 7` | [시소 짝꿍 #154](https://github.com/ksumini/Algorithm-Study2.0/issues/154), [부대복귀 #160](https://github.com/ksumini/Algorithm-Study2.0/issues/160)
 - `WEEK 8` | [택배 배달과 수거하기 #166](https://github.com/ksumini/Algorithm-Study2.0/issues/166), [2차원 동전 뒤집기 #167](https://github.com/ksumini/Algorithm-Study2.0/issues/167)
-- `WEEK 9` | [이모티콘 할인행사 #175](https://github.com/ksumini/Algorithm-Study2.0/issues/175)
+- `WEEK 9` | [이모티콘 할인행사 #175](https://github.com/ksumini/Algorithm-Study2.0/issues/175), [고고학 최고의 발견 #183](https://github.com/ksumini/Algorithm-Study2.0/issues/183)
+- `WEEK 10`| [마법의 엘리베이터 #189](https://github.com/ksumini/Algorithm-Study2.0/issues/189), [카운트 다운 #191](https://github.com/ksumini/Algorithm-Study2.0/issues/191)
+- `WEEK 11`| [LeetCode 3016 #200](https://github.com/ksumini/Algorithm-Study2.0/issues/200)
+- `WEEK 12`| [LeetCode 2 #206](https://github.com/ksumini/Algorithm-Study2.0/issues/206), [LeetCode 3 #208](https://github.com/ksumini/Algorithm-Study2.0/issues/208)
 
 
 <!-- ## ✨ 효과 만점 코딩테스트 Cheat Sheet!  
