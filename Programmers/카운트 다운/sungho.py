@@ -27,6 +27,7 @@ def solution(target):
         candidates = []
         candidates.append([NUM_DICT[i - 50][0] + 1, NUM_DICT[i - 50][1] + 1]) # 현재점수-50에서 50점 1발 맞췄을 때
         candidates.append([NUM_DICT[i - 60][0] + 1, NUM_DICT[i - 60][1]]) # 현재점수-60에서 60점 1발 맞췄을 때
+        candidates.append([NUM_DICT[i - 40][0] + 1, NUM_DICT[i - 40][1] + 1])
         candidates.append([NUM_DICT[i - 20][0] + 1, NUM_DICT[i - 20][1] + 1])  # 현재점수-20에서 20점 1발 맞췄을 때
         candidates.append(NUM_DICT[i])
 
