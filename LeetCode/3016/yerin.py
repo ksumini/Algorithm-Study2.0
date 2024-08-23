@@ -1,7 +1,7 @@
 '''
 소문자 str
 '''
-from collections import Counter, defaultdict
+from collections import Counter
 
 
 class Solution:
@@ -13,7 +13,7 @@ class Solution:
 
         # 문자 카운트
         counter_alphabet = Counter(word)
-        # 개수가 적은 순으로 숫자 패드에 매핑
+        # 개수가 많은 순으로 숫자 패드에 매핑
         counter_alphabet_sort = sorted(counter_alphabet.items(), key=lambda x: x[1], reverse= True)
 
         for alph, cnt in counter_alphabet_sort:
