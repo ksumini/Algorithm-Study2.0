@@ -21,7 +21,7 @@ if s[i] == s[j] and dp[i+1][j-1]:
 O(n**2)
 """
 
-
+# DP 풀이
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         n = len(s)
@@ -46,3 +46,22 @@ class Solution:
                     max_len = j - i + 1
                     start = i
         return s[start: start + max_len]
+    
+# 투포인터 풀이
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        # 팰린드롬 판별 및 투 포인터 확장
+        def expand(left: int, right: int) -> str:
+            while left >= 0 and right <= len(s) and s[left] == s[right-1]:
+                left -= 1
+                right += 1
+            return s[left+1:right-1]
+
+        if len(s) < 2 or s == s[::-1]:
+            return s
+
+        result = ''
+        for i in range(len(s)-1):
+            result = max(result, expand(i, i+1), expand(i, i+2), key=len)
+
+        return result
