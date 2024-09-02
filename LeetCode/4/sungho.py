@@ -31,3 +31,36 @@ class Solution(object):
                 if j + 1 - i > section[1] - section[0] and check_palindrome(s, i, j):
                     section = [i, j + 1]
         return s[section[0]:section[1]]
+
+
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        n = len(s)
+        if n <= 1:  # 1개이하인 경우
+            return s
+
+        result = ''
+        for i in range(n - 1):
+            L, R = 0, 0
+            # 중앙부
+            if s[i] != s[i + 1]:  # 홀수인 경우
+                L, R = i - 1, i + 1
+            else:  # 짝수인 경우
+                t = i
+                while t < n and s[t] == s[i]:
+                    R = t
+                    t += 1
+                L = i - 1
+                R += 1
+
+            # 옆에 날개
+            while L > -1 and R < n and s[L] == s[R]:
+                L -= 1
+                R += 1
+            if R - L > len(result):
+                result = s[L + 1:R]
+        return result
