@@ -14,5 +14,4 @@ class Solution:
 
         if min_ <= reverse_num <= max_:
             return reverse_num
-        else:
-            return 0
+        return 0
