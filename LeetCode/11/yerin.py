@@ -12,13 +12,9 @@ class Solution:
     def maxArea(self, height: list) -> int:
         n = len(height)
         height = sorted(enumerate(height), reverse=True, key= lambda x: x[1])
-        min_index, max_index = len(height) - 1, 0
         area = 0
-        for i in range(n):
-            if i == 0:
-                min_index = height[i][0]
-                max_index = height[i][0]
-                continue
+        min_index, max_index = height[0][0], height[0][0] 
+        for i in range(1, n):
             width = max(abs(min_index - height[i][0]), abs(max_index - height[i][0]))
             area = max(area, width * height[i][1])
 
