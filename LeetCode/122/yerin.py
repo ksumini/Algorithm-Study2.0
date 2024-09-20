@@ -5,6 +5,6 @@ class Solution:
         for price in prices[1:]:
             if current < price:
                 answer += price - current
-        return answer
-
+            current = price
+        return answer 
 
