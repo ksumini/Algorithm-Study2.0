@@ -14,10 +14,10 @@ class Solution:
         q = deque()
         q.append([1, 0])    # [현재위치, 이동 횟수]
         visited = set()     # 방문 위치 저장
+        visited.add(1)
         
         while q:
             now, cnt = q.popleft()
-            visited.add(now)
             if now >= n**2: # 도착 지점 도착
                 return cnt
             cnt += 1
@@ -28,8 +28,10 @@ class Solution:
                 now -= 1    # 위치 뒤로 이동
                 if point != -1 and point not in visited:    # 사다리와 뱀 경우
                     q.append([point, cnt])
+                    visited.add(point)
                 elif point == -1 and point not in visited and last_check:   # 뱀, 사다리가 아닌 최대 칸 경우
                     q.append([now, cnt])
+                    visited.add(now)
                     last_check = False
 
         return -1   # 도달 불가
