@@ -23,7 +23,6 @@ class Solution:
         while q:
             label, step = q.popleft()
             
-            # 주사위 결과를 시뮬레이션 (최대 6칸까지)
             for move in range(label + 1, min(label + 6, n ** 2) + 1):
                 x, y = label_map[move]
                 next_label = board[x][y] if board[x][y] != -1 else move
@@ -31,9 +30,8 @@ class Solution:
                 if next_label == n ** 2:  # 도착했을 때 바로 리턴
                     return step + 1
                 
-                # 방문하지 않은 라벨이면 큐에 추가
                 if next_label not in visited:
                     q.append((next_label, step + 1))
                     visited.add(next_label)
 
-        return -1  # 도착할 수 없는 경우
+        return -1
