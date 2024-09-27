@@ -79,7 +79,15 @@ ex) Update README.md
 - `WEEK 1` | [혼자하는 틱택토 #77](https://github.com/ksumini/PS-Study/issues/78), [표현 가능한 이진트리 #84](https://github.com/ksumini/PS-Study/issues/84)
 - `WEEK 2` | [미로 탈출 #90](https://github.com/ksumini/PS-Study/issues/90), [표 병합 #96](https://github.com/ksumini/PS-Study/issues/96)
 - `WEEK 3` | [호텔 대실 #97](https://github.com/ksumini/PS-Study/issues/97), [미로 탈출 명령어 #110](https://github.com/ksumini/PS-Study/issues/110)
-- `WEEK 4` | [무인도 여행 #114](https://github.com/ksumini/PS-Study/issues/114)
+- `WEEK 4` | [무인도 여행 #114](https://github.com/ksumini/PS-Study/issues/114), [억억단을 외우자 #123](https://github.com/ksumini/Algorithm-Study2.0/issues/123)
+- `WEEK 5` | [뒤에 있는 큰 수 찾기 #130](https://github.com/ksumini/Algorithm-Study2.0/issues/130), [숫자 타자 대회 #136](https://github.com/ksumini/Algorithm-Study2.0/issues/136)
+- `WEEK 6` | [숫자 변환하기 #141](https://github.com/ksumini/Algorithm-Study2.0/issues/141), [등대 #143](https://github.com/ksumini/Algorithm-Study2.0/issues/143)
+- `WEEK 7` | [시소 짝꿍 #154](https://github.com/ksumini/Algorithm-Study2.0/issues/154), [부대복귀 #160](https://github.com/ksumini/Algorithm-Study2.0/issues/160)
+- `WEEK 8` | [택배 배달과 수거하기 #166](https://github.com/ksumini/Algorithm-Study2.0/issues/166), [2차원 동전 뒤집기 #167](https://github.com/ksumini/Algorithm-Study2.0/issues/167)
+- `WEEK 9` | [이모티콘 할인행사 #175](https://github.com/ksumini/Algorithm-Study2.0/issues/175), [고고학 최고의 발견 #183](https://github.com/ksumini/Algorithm-Study2.0/issues/183)
+- `WEEK 10`| [마법의 엘리베이터 #189](https://github.com/ksumini/Algorithm-Study2.0/issues/189), [카운트 다운 #191](https://github.com/ksumini/Algorithm-Study2.0/issues/191)
+- `WEEK 11`| [LeetCode 3016 #200](https://github.com/ksumini/Algorithm-Study2.0/issues/200)
+- `WEEK 12`| [LeetCode 2 #206](https://github.com/ksumini/Algorithm-Study2.0/issues/206), [LeetCode 3 #208](https://github.com/ksumini/Algorithm-Study2.0/issues/208)
 
 
 <!-- ## ✨ 효과 만점 코딩테스트 Cheat Sheet!  
