@@ -2,28 +2,29 @@ from collections import deque
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        p_parent = []   # p의 부모 노드들 (자신 포함)
-        q_parent = []   # q의 부모 노드들 (자신 포함)
+        # 부모 노드 정보를 저장할 딕셔너리
+        parent_map = {root: None}
+        queue = deque([root])
         
-        queue = deque() # 노드 탐색
-        queue.append([root, [root]])    # 노드, 노드의 부모 노드들 (자신 포함)
-        p_check, q_check = True, True   # 노드 탐색 여부
-        
-        while queue and (p_check or q_check):
-            node, parent = queue.popleft()
-            if node == q:
-                q_check = False
-                q_parent = parent
-            if node == p:
-                p_check = False
-                p_parent = parent
+        # p와 q의 부모 노드를 찾을 때까지 BFS 탐색
+        while p not in parent_map or q not in parent_map:
+            node = queue.popleft()
+            
             if node.left:
-                queue.append([node.left, parent+[node.left]])
-
+                parent_map[node.left] = node  # 왼쪽 자식의 부모로 현재 노드를 저장
+                queue.append(node.left)
             if node.right:
-                queue.append([node.right, parent+[node.right]])
-                
-        for i in range(min(len(p_parent), len(q_parent))-1, -1, -1):    # 최소 깊이 부터 부모 확인
-            if p_parent[i] == q_parent[i]:
-                return p_parent[i]
-        return root
+                parent_map[node.right] = node  # 오른쪽 자식의 부모로 현재 노드를 저장
+                queue.append(node.right)
+        
+        # p의 모든 조상 노드를 set에 저장
+        ancestors = set()
+        while p:
+            ancestors.add(p)
+            p = parent_map[p]
+        
+        # q의 조상 중 p와 공통되는 첫 번째 노드를 찾음
+        while q not in ancestors:
+            q = parent_map[q]
+        
+        return q  # 가장 가까운 공통 조상
