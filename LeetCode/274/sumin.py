@@ -45,7 +45,7 @@ class Solution:
         right = self.lowestCommonAncestor(root.right, p, q)
 
         # p와 q가 각각 다른 서브 트리에 있으면, 현재 노드가 LCA
-        if left is not None and right is not None:
+        if left and right:
             return root
 
         # 어느 한쪽 서브트리에서만 찾은 경우, 그쪽의 결과를 반환
