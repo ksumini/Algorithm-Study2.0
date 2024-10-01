@@ -29,7 +29,7 @@ class Solution:
             ancestors.add(p)
             p = parent[p]
 
-        # 공통 조장 탐색. 없으면 한 계층 위 노드로 갱신
+        # 공통 조상 탐색. 없으면 한 계층 위 노드로 갱신
         while q not in ancestors:
             q = parent[q]
 
