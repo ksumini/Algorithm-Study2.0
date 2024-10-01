@@ -30,7 +30,7 @@ class Solution:
             if 0 <= next_row < len(self.board) and \   # row가 범위 안에 있음 
                 0 <= next_col < len(self.board[0]) and \  # col이 범위 안에 있음
                 not self.visited[next_row][next_col] and \  # 방문한 적 없음
-                self.board[next_row][next_col] == self.word[idx]:  # 찾고자 하는 단어
+                self.board[next_row][next_col] == self.word[idx]:  # 찾고자 하는 알파벳
 
                 self.visited[next_row][next_col] = True
                 if self.dfs(next_row, next_col, idx + 1) is True:
