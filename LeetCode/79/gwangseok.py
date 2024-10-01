@@ -6,13 +6,14 @@ class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         self.board = board
         self.word = word
+        self.visited = [[False] * len(board[0]) for _ in range(len(board))]
         for row in range(len(board)):
             for col in range(len(board[0])):
                 if board[row][col] == word[0]:
-                    self.visited = [[False] * len(board[0]) for _ in range(len(board))]
                     self.visited[row][col] = True            
                     if self.dfs(row, col, 1) is True:
                         return True
+                    self.visited[row][col] = False
         
         return False
     
