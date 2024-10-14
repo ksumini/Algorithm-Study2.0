@@ -40,11 +40,7 @@ def get_score(x:int, y:int, student_like:List)->int:
         if 0<=nx<n and 0<=ny<n and board[nx][ny] in student_like:
             cnt += 1
 
-    if cnt == 4:    return 1000
-    elif cnt == 3:    return 100
-    elif cnt == 2:    return 10
-    elif cnt == 1:    return 1
-    else:   return 0
+    return pow(10, cnt - 1) if cnt else 0
 
 # 첫 학생은 무조건 [1, 1] 좌표에 배치
 student = list(map(int, input().split()))
