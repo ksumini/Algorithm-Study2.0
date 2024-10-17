@@ -17,9 +17,10 @@ class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         left = 0
         total = 0
-        answer = len(nums)
+        n = len(nums)
+        answer = n + 1
 
-        for right in range(len(nums)):
+        for right in range(n):
             total += nums[right]
 
             while total >= target:  # 조건을 만족할 경우 최소 길이를 구함
@@ -27,4 +28,4 @@ class Solution:
                 total -= nums[left]  # left 요소를 빼고
                 left += 1  # left를 증가시켜 서브 배열의 길이를 줄임
 
-        return answer if answer != len(nums) else 0  # 최소값을 찾지 못한 경우 0 반환
+        return answer if answer != n + 1 else 0  # 최소값을 찾지 못한 경우 0 반환
