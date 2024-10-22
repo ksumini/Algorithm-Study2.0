@@ -14,11 +14,11 @@ max_count = 0
 heap = []
 
 for i in home_office:
-    for end, start in (i[1], i[0]):
-        while heap and heap[0] < end - d:
-            heapq.heappop(heap)
-        if start >= end - d:
-            heapq.heappush(heap, start)
-        max_count = max(max_count, len(heap))
+    start, end = i[0], i[1]
+    while heap and heap[0] < end - d:
+        heapq.heappop(heap)
+    if start >= end - d:
+        heapq.heappush(heap, start)
+    max_count = max(max_count, len(heap))
 
 print(max_count)
