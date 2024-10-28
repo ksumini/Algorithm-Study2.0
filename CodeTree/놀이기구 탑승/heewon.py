@@ -52,7 +52,7 @@ for _ in range(1, n*n):
     student = list(map(int, input().split()))
     x, y = get_coordinate(student[1:])
     board[x][y] = student[0]
-    student_likes[student[0]] = student[1:]
+    student_likes[student[0]] = tuple(student[1:])
 
 total_score = 0
 for i in range(n):
