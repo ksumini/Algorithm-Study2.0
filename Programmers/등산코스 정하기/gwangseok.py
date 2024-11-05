@@ -44,7 +44,7 @@ def solution(n, paths, gates, summits):
     
     
     ans_node, ans_cost = 0, float('inf')
-    for summit in sorted(summits): # O(N)
+    for summit in sorted(summits): # O(N log N)
         if dp[summit] < ans_cost:
             ans_node = summit
             ans_cost = dp[summit]
