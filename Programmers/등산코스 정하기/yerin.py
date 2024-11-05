@@ -9,9 +9,7 @@ intensity : 휴식 없이 이동해야 하는 시간 중 가장 긴 시간
 출입구, 산봉우리 모두 하나씩만 갈 수 있음
 intensity 최소
 
-풀이 => 출발지에서 산봉우리까지의 최소 시간 구하고 * 2
 '''
-import heapq
 from collections import deque
 
 
