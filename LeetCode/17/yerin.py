@@ -23,11 +23,11 @@ class Solution:
         }
 
     def letterCombinations(self, digits: str) -> List[str]:
-        # answer = []
-        self.add_letter_to_string('', 0, digits)
-        return self.answer if self.answer else []
+        if len(digits) != 0:
+            self.add_letter_to_string('', 0, digits)
+        return self.answer
 
-    def add_letter_to_string(self, string: str, index: int, digits: str):
+    def add_letter_to_string(self, string: str, index: int, digits: str) -> None:
         if index < len(digits):
             for letter in self.map[digits[index]]:
                 self.add_letter_to_string(string + letter, index + 1, digits)
@@ -36,4 +36,4 @@ class Solution:
 
 
 if __name__ == '__main__':
-    print(Solution().letterCombinations(''))
+    print(Solution().letterCombinations('23'))
