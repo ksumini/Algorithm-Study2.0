@@ -75,7 +75,7 @@ ex) Update README.md
 
 <br/>
 
-### SESSION 2.0 : 집중적인 알고리즘 스터디 `진행중`⏳ 
+### SESSION 2.0 : 집중적인 알고리즘 스터디 `완료`⏳ 
 - `WEEK 1` | [혼자하는 틱택토 #77](https://github.com/ksumini/PS-Study/issues/78), [표현 가능한 이진트리 #84](https://github.com/ksumini/PS-Study/issues/84)
 - `WEEK 2` | [미로 탈출 #90](https://github.com/ksumini/PS-Study/issues/90), [표 병합 #96](https://github.com/ksumini/PS-Study/issues/96)
 - `WEEK 3` | [호텔 대실 #97](https://github.com/ksumini/PS-Study/issues/97), [미로 탈출 명령어 #110](https://github.com/ksumini/PS-Study/issues/110)
