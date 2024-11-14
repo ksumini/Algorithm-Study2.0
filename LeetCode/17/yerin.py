@@ -21,18 +21,18 @@ class Solution:
             '8': ['t', 'u', 'v'],
             '9': ['w', 'x', 'y', 'z'],
         }
-
-    def letterCombinations(self, digits: str) -> List[str]:
-        if len(digits) != 0:
-            self.add_letter_to_string('', 0, digits)
-        return self.answer
-
+        
     def add_letter_to_string(self, string: str, index: int, digits: str) -> None:
         if index < len(digits):
             for letter in self.map[digits[index]]:
                 self.add_letter_to_string(string + letter, index + 1, digits)
         else:
             self.answer.append(string)
+
+    def letterCombinations(self, digits: str) -> List[str]:
+        if len(digits) != 0:
+            self.add_letter_to_string('', 0, digits)
+        return self.answer
 
 
 if __name__ == '__main__':
