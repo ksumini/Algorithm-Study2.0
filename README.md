@@ -75,7 +75,7 @@ ex) Update README.md
 
 <br/>
 
-### SESSION 2.0 : 집중적인 알고리즘 스터디 `완료`⏳ 
+### SESSION 2.0 : 집중적인 알고리즘 스터디 `진행중`⏳ 
 - `WEEK 1` | [혼자하는 틱택토 #77](https://github.com/ksumini/PS-Study/issues/78), [표현 가능한 이진트리 #84](https://github.com/ksumini/PS-Study/issues/84)
 - `WEEK 2` | [미로 탈출 #90](https://github.com/ksumini/PS-Study/issues/90), [표 병합 #96](https://github.com/ksumini/PS-Study/issues/96)
 - `WEEK 3` | [호텔 대실 #97](https://github.com/ksumini/PS-Study/issues/97), [미로 탈출 명령어 #110](https://github.com/ksumini/PS-Study/issues/110)
@@ -87,7 +87,8 @@ ex) Update README.md
 - `WEEK 9` | [이모티콘 할인행사 #175](https://github.com/ksumini/Algorithm-Study2.0/issues/175), [고고학 최고의 발견 #183](https://github.com/ksumini/Algorithm-Study2.0/issues/183)
 - `WEEK 10`| [마법의 엘리베이터 #189](https://github.com/ksumini/Algorithm-Study2.0/issues/189), [카운트 다운 #191](https://github.com/ksumini/Algorithm-Study2.0/issues/191)
 - `WEEK 11`| [LeetCode 3016 #200](https://github.com/ksumini/Algorithm-Study2.0/issues/200)
-- `WEEK 12`| [LeetCode 2 #206](https://github.com/ksumini/Algorithm-Study2.0/issues/206), [LeetCode 3 #208](https://github.com/ksumini/Algorithm-Study2.0/issues/208)
+- `WEEK 12`| [LeetCode 2 #206](https://github.com/ksumini/Algorithm-Study2.0/issues/206), [LeetCode 3 #208](https://github.com/ksumini/Algorithm-Study2.0/issues/208)  
+이후 문제는 [노션 페이지](https://www.notion.so/sumina/Algorithm-Study-2-0-a4335b82ea5b47828f3775effc81c5d1)에서 아카이빙 및 관리중
 
 
 <!-- ## ✨ 효과 만점 코딩테스트 Cheat Sheet!  
