@@ -19,7 +19,7 @@ import sys
 input = sys.stdin.readline
 
 n, m = map(int, input().split())
-board = [list(map(int, input().split())) for _ in range(m)]
+board = [list(map(int, input().split())) for _ in range(n)]
 
 blocks = (
     ((0,1), (0,2), (0,3)),
