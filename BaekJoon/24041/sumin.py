@@ -51,7 +51,7 @@ def check(day):
     return total <= g
 
 left = 1
-right = int(1e9) # 최대 가능한 날짜
+right = int(2e9) # 최대 가능한 날짜
 answer = 0
 
 while left <= right:
