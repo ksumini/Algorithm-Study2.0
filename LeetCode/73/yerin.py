@@ -13,8 +13,7 @@ class Solution:
                     cols.add(j)
 
         for i in rows:
-            for j in range(n):
-                matrix[i][j] = 0
+            matrix[i] = [0] * n
 
         for j in cols:
             for i in range(m):
