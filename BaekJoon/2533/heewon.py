@@ -15,13 +15,14 @@ def dfs(node: int) -> tuple:
     on, off = 1, 0
 
     # 연결된 노드 탐색
-    for child in [child for child in graph[node] if not visited[child]]:
-        # 연결된 노드 (child) 에 대한 DFS 수행 (자식 노드 탐색)
-        child_on, child_off = dfs(child)
+    for child in graph[node]:
+        if not visited[child]:
+            # 연결된 노드 (child) 에 대한 DFS 수행 (자식 노드 탐색)
+            child_on, child_off = dfs(child)
 
-        # 자식 노드를 포함하는 경우 (ON) 과 제외하는 경우 (OFF) 각각 최소 방법 고려
-        on += min(child_on, child_off)
-        off += child_on
+            # 자식 노드를 포함하는 경우 (ON) 과 제외하는 경우 (OFF) 각각 최소 방법 고려
+            on += min(child_on, child_off)
+            off += child_on
 
     # 현재 노드를 기준으로 지도를 밝히는 방법의 수 (ON, OFF) 반환
     return on, off
