@@ -6,7 +6,7 @@ N = int(input())
 awards = []
 cum_awards = []
 diffs = []  # i번째 대회까지 계속 참가했을 때와 x_i 차이 
-first_neg_idx = N
+first_neg_idx = N - 1
 
 for i in range(N):
     x_i, p_i = map(int, input().split())
@@ -19,12 +19,12 @@ for i in range(N):
         diff = x_i
     diffs.append(diff)
 
-    if first_neg_idx is None and diff < 0:
+    if first_neg_idx == N - 1 and diff < 0:
         first_neg_idx = i
 
 # 첫 번째로 참가못하게 되는 대회는 first_neg_idx 번째 대회이다. 
-if first_neg_idx <= N-1:
-    # first_neg_idx가 N-1보다 작으면 참가못하는 대회가 없거나,
+if first_neg_idx == N-1:
+    # first_neg_idx가 N-1이면 참가못하는 대회가 없거나,
     # 마지막 대회를 포기한다.
     print("Kkeo-eok")
 else:
