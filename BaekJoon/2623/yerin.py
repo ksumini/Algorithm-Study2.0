@@ -6,17 +6,13 @@ graph = [[] for _ in range(n+1)]
 indegree = [0] * (n+1)
 
 for _ in range(m):
-    order = list(map(int, input().split()))
-    for i in range(1, len(order)-1):
-        graph[order[i]].append(order[i+1])
-        indegree[order[i+1]] += 1
+    order = list(map(int, input().split()))[1:]
+    for a, b in zip(order, order[1:]):
+        graph[a].append(b)
+        indegree[b] += 1
 
 result = []
-q = deque()
-
-for i in range(1, n+1):
-    if indegree[i] == 0:
-        q.append(i)
+q = deque([i for i in range(1, n + 1) if indegree[i] == 0])
 
 while q:
     current = q.popleft()
