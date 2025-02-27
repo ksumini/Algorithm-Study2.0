@@ -1,15 +1,9 @@
-import sys
 from collections import defaultdict, deque
-
-input = sys.stdin.readline
 
 n, m = map(int, input().split())
 
 graph = defaultdict(list)
-
-before_edge = defaultdict(int)
-
-visited = [False] * (n+1)
+indegree = defaultdict(int)
 
 answer = []
 
@@ -17,30 +11,21 @@ for _ in range(m):
   _, *seq = list(map(int, input().split()))
   for i in range(len(seq)-1):
       graph[seq[i]].append(seq[i+1])
-      before_edge[seq[i+1]] += 1
+      indegree[seq[i+1]] += 1
 
-q = deque([i for i in range(1, n+1)])
-
-cnt = 0
+q = deque([i for i in range(1, n+1) if indegree[i]==0])
 
 while q:
     singer = q.popleft()
+    
+    q.append(singer)
 
-    if cnt > n:
-        break
-
-    if before_edge[singer] == 0:
-        answer.append(singer)
-        for next_ in graph[singer]:
-            before_edge[next_] -= 1
-        cnt = 0
-    else:
-        q.append(singer)
-        cnt += 1
-
+    for next_ in graph[singer]:
+        indegree[next_] -= 1
+        if indegree[next_] == 0:
+            q.append(singer)
 
 if n == len(answer):
-    for i in answer:
-        print(i)
+    print(*i, sep='\n')
 else:
     print(0)
