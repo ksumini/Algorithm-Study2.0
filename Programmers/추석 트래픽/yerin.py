@@ -1,5 +1,3 @@
-import heapq
-
 def get_start_end_time(info):
     _, end_time, spent_time = info.split()
     hours, minutes, seconds = map(float, end_time.split(':'))
