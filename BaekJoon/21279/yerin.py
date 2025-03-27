@@ -9,7 +9,6 @@ gems = [list(map(int, input().split())) for _ in range(n)]
 gems.sort()
 
 info = []
-heapq.heapify(info)
 
 total = 0
 ans = 0
