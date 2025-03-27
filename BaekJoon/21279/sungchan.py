@@ -1,53 +1,47 @@
 from collections import defaultdict, deque, namedtuple
-from dataclasses import dataclass
 
-Point = namedtuple('Point', ['x', 'y'])
+Mine = namedtuple('Mine', ['value', 'cost'])
+MAX_X = MAX_Y = 100_000 + 1
 
-@dataclass
-class Mine:
-    value: int
-    cost: int
+minerals = defaultdict(lambda : defaultdict(int))
 
+mines: defaultdict = defaultdict(lambda : defaultdict(lambda : Mine(0,0)))
+
+
+point_x = {-1, MAX_X}
+point_y = {-1, MAX_Y}
 
 n, cash = map(int, input().split())
-minerals: dict[Point, int] = dict()
-mines: dict[Point, Mine] = dict()
-
-set_x = set()
-set_y = set()
-
 for _ in range(n):
     x, y, value = map(int, input().split())
-    point = Point(x, y)
-    minerals[point] = value
-    set_x.add(x)
-    set_y.add(y)
+    minerals[x][y] = value
+    point_x.add(x)
+    point_y.add(y)
 
-
-for x in set_x:
-    for y in set_y:
-        point = Point(x, y)
-        mines[point] = Mine(0, 0)
-
-for mineral_point, mineral_value in minerals.items():
-    for mine_point in mines.keys():
-        if mine_point.x < mineral_point.x and mineral_point.y < mine_point.y:
-            continue
-
-        if mineral_point.x <= mine_point.x or mineral_point.y <= mine_point.y:
-            mines[mine_point].value += mineral_value
-            mines[mine_point].cost += 1
-
-
+point_x = sorted(point_x)
+point_y = sorted(point_y)
 
 max_value = 0
-for mine in mines.values():
-    if mine.cost <= cash:
-        max_value = max(max_value, mine.value)
+
+for x in point_x[1:]:
+    y_value = 0
+    y_cost = 0
+    for y in point_y[1:]:
+        y_value += minerals[x][y]
+        y_cost += 1 if minerals[x][y] else 0
+        value = mines[x - 1][y].value + y_value
+        cost = mines[x - 1][y].cost + y_cost
+
+        if cost > cash:
+            value = float('-inf')
+        else:
+            max_value = max(max_value, value)
+            # print(f"x: {x}, y: {y}, value: {value}, cost: {cost}")
+
+        mines[x][y] = Mine(value, cost)
+
+
+
+
 
 print(max_value)
-
-
-
-
-
