@@ -1,47 +1,44 @@
-from collections import defaultdict, deque, namedtuple
-
-Mine = namedtuple('Mine', ['value', 'cost'])
-MAX_X = MAX_Y = 100_000 + 1
-
-minerals = defaultdict(lambda : defaultdict(int))
-
-mines: defaultdict = defaultdict(lambda : defaultdict(lambda : Mine(0,0)))
-
-
-point_x = {-1, MAX_X}
-point_y = {-1, MAX_Y}
-
+import sys
+from collections import defaultdict
+input = sys.stdin.readline
 n, cash = map(int, input().split())
+
+x_gems = defaultdict(list) # x좌표에 있는 보석들
+y_gems = defaultdict(list) # y좌표에 있는 보석들
+
 for _ in range(n):
-    x, y, value = map(int, input().split())
-    minerals[x][y] = value
-    point_x.add(x)
-    point_y.add(y)
-
-point_x = sorted(point_x)
-point_y = sorted(point_y)
-
-max_value = 0
-
-for x in point_x[1:]:
-    y_value = 0
-    y_cost = 0
-    for y in point_y[1:]:
-        y_value += minerals[x][y]
-        y_cost += 1 if minerals[x][y] else 0
-        value = mines[x - 1][y].value + y_value
-        cost = mines[x - 1][y].cost + y_cost
-
-        if cost > cash:
-            value = float('-inf')
-        else:
-            max_value = max(max_value, value)
-            # print(f"x: {x}, y: {y}, value: {value}, cost: {cost}")
-
-        mines[x][y] = Mine(value, cost)
+    x, y, v = map(int, input().split())
+    x_gems[x].append((y, v))
+    y_gems[y].append((x, v))
 
 
+result = 0
+cost = 0 # 보석 채굴 비용 = 보석 갯수
+value = 0
+x = 100_000 # x좌표 최대값
+y = 0 # y좌표 최소값
 
 
+bag = set()
 
-print(max_value)
+while x >= 0 and y <= 100_000:
+    if cost <= cash: # 가방에 더 넣을수 있는 경우
+        for _x, v in y_gems[y]:
+            if _x <= x:
+                bag.add((_x, y))
+                cost += 1
+                value += v
+        y += 1
+    else:
+        for _y, v in x_gems[x]:
+            if (x, _y) in bag: # 이미 가방에 있는 보석이라면
+                bag.remove((x, _y))
+                cost -= 1
+                value -= v
+        x -= 1
+
+    if cost <= cash: # 파산하지 않는 경우
+        result = max(result, value)
+
+print(result)
+
