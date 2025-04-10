@@ -1,26 +1,17 @@
 class Solution:
-    def dec_to_list_bin(self, n):
-        return list(map(int, format(n, 'b').zfill(30)))
-
     def minFlips(self, a: int, b: int, c: int) -> int:
-        bin_a = self.dec_to_list_bin(a)
-        bin_b = self.dec_to_list_bin(b)
-        bin_c = self.dec_to_list_bin(c)
-
         ans = 0
+        for i in range(30):
+            a_bit = (a >> i) & 1
+            b_bit = (b >> i) & 1
+            c_bit = (c >> i) & 1
 
-        for a_bit, b_bit, c_bit in zip(bin_a, bin_b, bin_c):
             if (a_bit | b_bit) == c_bit:
                 continue
 
             if c_bit == 0:
-                ans += a_bit + b_bit
+                ans += a_bit + b_bit  # 최대 2까지 가능
             else:
-                ans += 1
+                ans += 1  # c_bit == 1인데 둘 다 0이면 한 번 flip 필요
 
         return ans
-
-
-if __name__ == '__main__':
-    print(Solution().minFlips(258343848, 90957776, 291428165))
-
