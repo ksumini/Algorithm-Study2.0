@@ -15,9 +15,7 @@ def lcs(str1, str2, str3):
 
     return dp[len(str1)-1][len(str2)-1][len(str3)-1]
 
-# 입력 예제
 num_str = 3
 st = [read_line().strip() for _ in range(num_str)]
 
-# 결과 출력
 print(lcs(*st))
